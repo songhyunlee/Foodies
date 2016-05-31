@@ -92,7 +92,7 @@ function partialMatch(term) {
     suggestions.push(reviews[i]);
   }
   if (reviews[i].food.indexOf(term) !== -1) {
-    suggestions.push(reviews[i]);
+    suggestions.push(reviews[i]); 
   }
 };
 
