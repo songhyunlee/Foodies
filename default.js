@@ -7,7 +7,7 @@ var reviews = [
     rating: '5'
   },
   {
-    food: 'asian',
+    food: 'chinese',
     name: 'Great China',
     reviewer: 'John Doe',
     review: 'The food in general was all good, but the service was not that great.',
@@ -28,14 +28,14 @@ var reviews = [
     rating: 3
   },
   {
-    food: 'asian',
+    food: 'korean',
     name: 'Baekjung',
     reviewer: 'Remmy Smith',
     review: 'Korean BBQ. Sooo good. I definitely want to go back again.',
     rating: 5
   },
   {
-    food: 'asian',
+    food: 'japanese',
     name: 'Sushi Sushi',
     reviewer: 'Jim Miller',
     review: 'Very low quality. I would rather get sushi from Wholefoods.',
@@ -63,7 +63,7 @@ var reviews = [
     rating: 4
   },
   {
-    food: 'dessert',
+    food: 'coffee',
     name: 'Coffee-to-go',
     reviewer: 'Bri Angotti',
     review: 'Never coming back to this coffeeshop. Dirty and rude service for very cheap quality coffee.',
@@ -71,19 +71,13 @@ var reviews = [
   },
 ]
 
-var theButton = document.getElementById('search');
-theButton.addEventListener('click', function() {
-  var term = document.getElementById('term');
-  console.log((term.value, reviews));
-});
-
 function fullMatch(term) {
   for (var i = 0; i < reviews.length; i++) {
     if (term === reviews[i].name) {
-      return reviews[i].name;
+      return reviews[i];
     }
     if (term === reviews[i].food) {
-      return reviews[i].name;
+      return reviews[i];
     }
   }
 
@@ -95,14 +89,14 @@ function partialMatch(term) {
 
   for (var i =0; i < reviews.length; i++) {
   if (reviews[i].name.indexOf(term) !== -1) {
-    return(reviews[i]);
+    suggestions.push(reviews[i]);
   }
   if (reviews[i].food.indexOf(term) !== -1) {
-    return(reviews[i]);
+    suggestions.push(reviews[i]);
   }
 };
 
-  if(suggestions) {
+  if(suggestions.length > 0) {
     return suggestions;
   } else {
     return false;
@@ -115,12 +109,11 @@ myElement.addEventListener('click', function search(Event) {
     var matched = fullMatch(term.value);
     var part = partialMatch(term.value);
     var item = document.createElement('p');
-    if (matched) {
-      item.textContent = matched + " has a rating of " + matched.rating;
-    } if (part) {
+    if ( matched ) {
+      item.textContent = matched.name + " has a rating of " + matched.rating;
+    } else if (part) {
         var suggestions = partialMatch(term.value);
-        console.log(suggestions)
-        item.textContent = "did you mean " + "'" + part.name + "'" + "?"
+        item.textContent = "did you mean " + "'" + part[0].name + "'" + "?"
     } else {
       item.textContent = "No review found."
     }

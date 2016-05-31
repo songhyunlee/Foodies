@@ -1,0 +1,19 @@
+.header {
+  background-color: yellow;
+}
+
+#foodies {
+  width: 20%;
+  height: 20%;
+}
+
+img .restaurant {
+  text-align: left;
+}
+
+.foodsearch {
+  width: 100%;
+}
+
+.btn #search {
+  display: inline;}
