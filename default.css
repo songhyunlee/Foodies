@@ -1,5 +1,14 @@
+body {
+  font-family:
+}
 .header {
   background-color: yellow;
+  width: 130%;
+  padding: 20px;
+}
+
+.white {
+  background-color: white;
 }
 
 #foodies {
@@ -7,13 +16,23 @@
   height: 20%;
 }
 
-img .restaurant {
-  text-align: left;
-}
-
 .foodsearch {
   width: 100%;
 }
 
-.btn #search {
-  display: inline;}
+.btn-default {
+  color: green;
+}
+
+#restaurantimg {
+  width: 20%;
+  height: 20%;
+}
+
+.restaurants {
+  color: green;
+}
+
+.jumbotron p {
+  font-size: 15px;
+}

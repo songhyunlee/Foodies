@@ -9,19 +9,65 @@
   <body>
   <header class="container header">
     <div class="row">
-      <img id="foodies" src="foodies-logo.png" class="col-xs-4" align="middle">
-      <nav class="col-xs-8">
-        <form class="form-inline col-xs-8">
-          <div class="form-group">
-            <input id="term" type="text" class="form-control" name="term" placeholder="hungry?" width=100%/>
-            <button id="search" class="btn btn-default" type="button" name="button" />Find</button>
-          </div>
-        </form>
-      </nav>
-    </div>
+      <img id="foodies" src="foodies-logo.png" class="col-xs-2 col-xs-offset-1" align="middle">
+      <form class="form-inline">
+        <div class="form-group">
+          <input id="term" type="text" class="form-control" name="term" placeholder="hungry?" width=100%/>
+          <button id="search" class="btn btn-default" type="button" name="button" />Find</button>
+        </div>
+      </form>
     </div>
   </header>
-  
+  <section class="jumbotron white col-xs-offset-1">
+    <div class="container">
+      <div class="results">
+    <div class="container">
+      <div class="row text-left">
+        <h2>Highly Rated Restaurants</h4>
+      </div>
+      <div class="infobox">
+        <div class="row">
+          <p>
+            <img src="cheezboard.jpg" align="left" id="restaurantimg">
+          </p>
+          <p>
+            <h4 class="restaurants"> Cheezboard </h4>
+            <div class="row">
+            <div class="rating"> Rating: 5</div>
+            <p class="description"> Vegetarian pizzeria serving different pizza everyday... </p>
+            </div>
+          </p>
+        </div>
+      </div>
+      <div class="infobox">
+        <div class="row">
+          <p>
+            <img src="greatchina.jpeg" align="left" id="restaurantimg">
+          </p>
+          <p>
+            <h4 class="restaurants"> Great China </h4>
+            <div class="rating"> Rating: 5</div>
+            <div class="row">
+            <p class="description"> Chinese restaurant with a chic, modern atmosphere... </p>
+            </div>
+          </p>
+        </div>
+      </div>
+      <div class="infobox">
+        <div class="row">
+          <p>
+            <img src="burritos.jpg" align="left" id="restaurantimg">
+          </p>
+          <p>
+            <h4 class="restaurants"> Tacos o Burritos </h4>
+            <div class="rating"> Rating: 5</div>
+            <div class="row">
+            <p class="description"> Street style tacos and burritos with rich flavor... </p>
+            </div>
+          </p>
+        </div>
+      </div>
+  </section>
   <script src="default.js"></script>
   </body>
 </html>

@@ -10,8 +10,8 @@ var reviews = [
     food: 'chinese',
     name: 'Great China',
     reviewer: 'John Doe',
-    review: 'The food in general was all good, but the service was not that great.',
-    rating: 4
+    review: 'Delicious food, excellent service',
+    rating: 5
   },
   {
     food: 'seafood',
@@ -32,7 +32,7 @@ var reviews = [
     name: 'Baekjung',
     reviewer: 'Remmy Smith',
     review: 'Korean BBQ. Sooo good. I definitely want to go back again.',
-    rating: 5
+    rating: 4
   },
   {
     food: 'japanese',
@@ -46,7 +46,7 @@ var reviews = [
     name: 'Tacos o Burritos',
     reviewer: 'Tucker Venditozzi',
     review: 'My favorite burritos in town. They should put more meat in them, though.',
-    rating: 4
+    rating: 5
   },
   {
     food: 'foodtruck',
