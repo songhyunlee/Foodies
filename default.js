@@ -92,7 +92,7 @@ function partialMatch(term) {
     suggestions.push(reviews[i]);
   }
   if (reviews[i].food.indexOf(term) !== -1) {
-    suggestions.push(reviews[i]); 
+    suggestions.push(reviews[i]);
   }
 };
 
@@ -105,17 +105,21 @@ function partialMatch(term) {
 
 var myElement = document.getElementById('search')
 myElement.addEventListener('click', function search(Event) {
-    var term = document.getElementById('term');
-    var matched = fullMatch(term.value);
-    var part = partialMatch(term.value);
-    var item = document.createElement('p');
-    if ( matched ) {
-      item.textContent = matched.name + " has a rating of " + matched.rating;
-    } else if (part) {
-        var suggestions = partialMatch(term.value);
-        item.textContent = "did you mean " + "'" + part[0].name + "'" + "?"
-    } else {
-      item.textContent = "No review found."
-    }
-    document.body.appendChild(item);
+  var removeEl = document.getElementsByClassName('container recommended')[0];
+  var containerEl = removeEl.parentNode;
+  containerEl.removeChild(removeEl);
+  var term = document.getElementById('term');
+  var matched = fullMatch(term.value);
+  var part = partialMatch(term.value);
+  var item = document.createElement('p');
+  if ( matched ) {
+    item.textContent = matched.name + " has a rating of " + matched.rating;
+  } else if (part) {
+      var suggestions = partialMatch(term.value);
+      item.textContent = "did you mean " + "'" + part[0].name + "'" + "?"
+  } else {
+    item.textContent = "No review found."
+  }
+  var position = document.getElementsByClassName('results')[0];
+  position.appendChild(item);
 });
