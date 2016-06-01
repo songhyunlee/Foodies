@@ -113,7 +113,7 @@ myElement.addEventListener('click', function search(Event) {
   var part = partialMatch(term.value);
   var item = document.createElement('p');
   if ( matched ) {
-    item.textContent = matched.name + " has a rating of " + matched.rating;
+    item.textContent = "You've searched for: " + "'"+term.value +"'. " + matched.name + " has a rating of " + matched.rating + ".";
   } else if (part) {
       var suggestions = partialMatch(term.value);
       item.textContent = "did you mean " + "'" + part[0].name + "'" + "?"
