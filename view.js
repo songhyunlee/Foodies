@@ -5,7 +5,7 @@ var reviews = [
     reviewer: 'Sarah Anderson',
     review: 'The best vegetarian pizza I have ever had.',
     rating: 5,
-    address: '6571 Culver Dr, Irvine, CA 92612'
+    address: '6571 Culver Dr, Irvine, CA 92612',
     phone: '949-567-8901',
     id: 'cheezboard',
   },
@@ -34,7 +34,7 @@ var reviews = [
     name: 'Siciliana',
     reviewer: 'Ken Peterson',
     review: 'I do not understand why people line up for this place. It was okay.',
-    rating: 3
+    rating: 3,
     address: '6571 Culver Dr, Irvine, CA 92612',
     phone: '949-567-8901',
     id: 'italian',
@@ -56,7 +56,7 @@ var reviews = [
     review: 'Very low quality. I would rather get sushi from Wholefoods.',
     rating: 1,
     address: '6571 Culver Dr, Irvine, CA 92612',
-    phone: '949-567-8901'
+    phone: '949-567-8901',
     id: 'italian',
   },
   {
@@ -101,42 +101,10 @@ var reviews = [
   },
 ]
 
-function partialMatch(term) {
-  var suggestions = [];
-
-  for (var i =0; i < reviews.length; i++) {
-  if (reviews[i].name.indexOf(term) !== -1) {
-    suggestions.push(reviews[i]);
-  }
-  if (reviews[i].food.indexOf(term) !== -1) {
-    suggestions.push(reviews[i]);
-  }
-};
-
-  if(suggestions.length > 0) {
-    return suggestions;
-  } else {
-    return false;
-  }
-}
-
-var myElement = document.getElementById('search')
-myElement.addEventListener('click', function search(Event) {
-  var removeEl = document.getElementsByClassName('container recommended')[0];
-  var containerEl = removeEl.parentNode;
-  containerEl.removeChild(removeEl);
-  var term = document.getElementById('term');
-  var matched = fullMatch(term.value);
-  var part = partialMatch(term.value);
+var myElement = document.getElementById('cheezboard')
+myElement.addEventListener('click', function view(items, area) {
   var item = document.createElement('p');
-  if ( matched ) {
-    item.textContent = "You've searched for: " + "'"+term.value +"'. " + matched.name + " has a rating of " + matched.rating + ".";
-  } else if (part) {
-      var suggestions = partialMatch(term.value);
-      item.textContent = "did you mean " + "'" + part[0].name + "'" + "?"
-  } else {
-    item.textContent = "No review found."
-  }
-  var position = document.getElementsByClassName('results')[0];
+  item.textContent = reviews[0].reviewer + " said: " + reviews[0].review;
+  var position = document.getElementsByClassName('area')[0];
   position.appendChild(item);
 });
