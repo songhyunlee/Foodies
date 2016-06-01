@@ -1,0 +1,52 @@
+body {
+  font-family: "Comic Sans MS", cursive, sans-serif;;
+}
+.header {
+  font-size: 30px;
+  letter-spacing: 2px;
+  text-align: center;
+  color: green;
+  background-color: yellow;
+}
+
+.white {
+  background-color: white;
+}
+
+#foodies {
+  width: 20%;
+  height: 40%;
+}
+
+#restaurantimg {
+  width: 20%;
+  height: 20%;
+  margin-left: 20px
+}
+
+.restaurants {
+  color: green;
+}
+
+p.clear.address {
+width: 230px;
+float: right;
+margin: 5px;
+padding: 5px;
+font-size: 15px;
+color:gray;}
+
+.jumbotron p {
+  font-size: 18px;
+}
+
+.infobox {
+  border-style: solid;
+  border-color: yellow;
+  border-radius: 20px;
+  padding: 20px;
+}
+
+.btn.btn-default {
+  color: green;
+}
