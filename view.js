@@ -18,7 +18,7 @@ var reviews = [
     reviewer: 'John Doe',
     review: 'Delicious food, excellent service',
     rating: 5,
-    address: '1 Culver Dr, Irvine, CA 92612',
+    address: '3333 Bristol St, Costa Mesa CA 92603',
     phone: '949-567-8901',
     id: 'greatchina',
     image: 'greatchina.jpeg',
@@ -42,7 +42,7 @@ var reviews = [
     reviewer: 'Ken Peterson',
     review: 'I do not understand why people line up for this place. It was okay.',
     rating: 3,
-    address: '1 Culver Dr, Irvine, CA 92612',
+    address: '3333 Bristol St, Costa Mesa CA 92603',
     phone: '949-567-8901',
     id: 'italian',
     image: 'siciliana.jpg',
@@ -136,6 +136,8 @@ for (var i = 0; i < reviews.length; i++) {
   var score = document.createElement('div');
   var description = document.createElement('div');
   var theButton = document.createElement('button');
+  var area = document.createElement('div');
+  area.setAttribute('class', 'area');
   infobox.setAttribute('class', 'infobox');
   row.setAttribute('class', 'row');
   image.setAttribute('class', 'col-xs-3');
@@ -145,11 +147,13 @@ for (var i = 0; i < reviews.length; i++) {
   address.textContent = reviews[i].address;
   phone.textContent = reviews[i].phone;
   info.setAttribute('class', 'info col-xs-6');
+  biz.setAttribute('class', 'biz');
   biz.textContent = reviews[i].biz;
   score.textContent = "Rating: " + reviews[i].rating ;
   description.setAttribute('class', 'description');
   description.textContent = reviews[i].description ;
   theButton.setAttribute('class', 'btn btn-default btn-sm center-block');
+  theButton.setAttribute('id', reviews[i].id);
   theButton.textContent = "Reviews";
   var restaurants = document.getElementsByClassName('high')[0];
   restaurants.appendChild(infobox);
@@ -165,18 +169,25 @@ for (var i = 0; i < reviews.length; i++) {
   addbox.appendChild(phone);
   rating.appendChild(score);
   infobox.appendChild(theButton);
-}
-var myElement = document.getElementById('cheezboard')
-myElement.addEventListener('click', function view(items, area) {
-  var item = document.createElement('p');
-  item.textContent = reviews[0].reviewer + " said: " + "'"+ reviews[0].review + "'";
-  var area = document.getElementsByClassName('area')[0];
-  clear(area);
-  area.appendChild(item);
-});
+  infobox.appendChild(area);
 
-function clear(area) {
-  while(area.firstChild) {
-    area.removeChild(area.firstChild);
+}
+
+var clicked = document.querySelectorAll('button.btn-sm');
+if(clicked.length>0) {
+  for (var j=0; j<clicked.length; j++) {
+  clicked[j].addEventListener('click', function view (theEvent) {
+  var buttonId = theEvent.target.getAttribute('id');
+  var results = [];
+  for (var i = 0; i < reviews.length; i++) {
+    if (reviews[i].id == buttonId) {
+      results.push(reviews[i].review)
+      var message = document.getElementsByClassName('area')[0];
+      message.textContent = reviews[i].reviewer + " said: " + "'" + reviews[i].review + "'";
+    } else {
+      return false;
+    }
   }
+});
+}
 }
