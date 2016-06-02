@@ -18,10 +18,11 @@ body {
   height: 40%;
 }
 
-#restaurantimg {
-  width: 20%;
-  height: 20%;
-  margin-left: 20px
+.imageRest {
+  width: 200;
+  height: 100;
+  margin-left: 20px;
+  margin-right: 20px;
 }
 
 .restaurants {
@@ -53,5 +54,5 @@ color:gray;}
 
 .area {
   text-align: center;
-  
+
 }
