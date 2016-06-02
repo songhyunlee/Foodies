@@ -18,24 +18,14 @@ body {
   height: 40%;
 }
 
-.imageRest {
-  width: 200;
-  height: 100;
-  margin-left: 20px;
-  margin-right: 20px;
-}
-
-.restaurants {
+.biz {
   color: green;
 }
 
-p.clear.address {
-width: 230px;
-float: right;
-margin: 5px;
-padding: 5px;
-font-size: 15px;
-color:gray;}
+.addbox {
+  font-size: 15px;
+  color:gray;
+}
 
 .jumbotron p {
   font-size: 18px;
