@@ -171,11 +171,14 @@ myElement.addEventListener('click', function search(Event) {
   thePanel.appendChild(panelBody);
   item.appendChild(thePanel);
   if ( matched ) {
-    panelBody.textContent = "You've searched for: " + "'"+term.value +"'. " + matched.biz + " has a rating of " + matched.rating + ".";
+    panelHeading.textContent = "Showing results for: " + "'"+term.value +"'. " ;
+    panelBody.textContent = matched.biz + " has a rating of " + matched.rating + ".";
   } else if (part) {
       var suggestions = partialMatch(term.value);
+      panelHeading.textContent = "Showing results for: " + "'"+term.value +"'. " ;
       panelBody.textContent = "did you mean " + "'" + part[0].biz + "'" + "?"
   } else {
+    panelHeading.textContent = "Showing results for: " + "'"+term.value +"'. " ;
     panelBody.textContent = "No review found."
   }
   var position = document.getElementById('results');
