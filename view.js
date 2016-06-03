@@ -137,7 +137,13 @@ for (var i = 0; i < reviews.length; i++) {
   var description = document.createElement('div');
   var theButton = document.createElement('button');
   var area = document.createElement('div');
+  var thePanel = document.createElement('div');
+  var panelHeading = document.createElement('div');
+  var panelBody = document.createElement('div');
   area.setAttribute('class', 'area');
+  thePanel.setAttribute('class', 'panel panel-success hide');
+  panelHeading.setAttribute('class', 'panel-heading');
+  panelBody.setAttribute('class', 'panel-body');
   infobox.setAttribute('class', 'infobox');
   row.setAttribute('class', 'row');
   image.setAttribute('class', 'col-xs-3');
@@ -170,7 +176,9 @@ for (var i = 0; i < reviews.length; i++) {
   rating.appendChild(score);
   infobox.appendChild(theButton);
   infobox.appendChild(area);
-
+  area.appendChild(thePanel);
+  thePanel.appendChild(panelHeading);
+  thePanel.appendChild(panelBody);
 }
 
 // Create HTML elements out of the reviews.
@@ -185,10 +193,17 @@ function get(reviews) {
   return set;
 }
 
+//Hide and show thePanel (reviews) when the button is clicked.
+// function show(hide) {
+//      var hide = document.getElementById('hide');
+//      if(hide.style.display == 'none')
+//         hide.style.display = 'block';
+//      else
+//         hide.style.display = 'none';
+//   }
+
 function addReviews(theEvent) {
-
-  var buttonId = theEvent.target.getAttribute('id');
-
+var buttonId = theEvent.target.getAttribute('id');
   for (var i = 0; i < reviews.length; i++) {
 
     if (reviews[i].id == buttonId) {
@@ -197,7 +212,7 @@ function addReviews(theEvent) {
       var infobox = theEvent.target.parentNode;
 
       for (var i = 0; i < list.length; i++) {
-        var message = infobox.getElementsByClassName('area')[0];
+        var message = infobox.getElementsByClassName('panel-body')[0];
         message.appendChild(list[i]);
       }
 
@@ -209,4 +224,5 @@ var clicked = document.querySelectorAll('button.btn-sm');
 
 for (var j=0; j < clicked.length; j++) {
   clicked[j].addEventListener('click', addReviews);
+  // clicked[j].addEventListener('click', show);  **to hide/show thePanel
 }
