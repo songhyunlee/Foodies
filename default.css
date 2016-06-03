@@ -1,4 +1,4 @@
-body {   
+body {
   font-family: "Comic Sans MS", cursive, sans-serif;;
 }
 .header {
@@ -40,7 +40,12 @@ form {
 
 }
 
-#restaurantimg {
+#results {
+  padding-top: 50px;
+  margin-left: auto;
+  margin-right: auto;
+}
+/*#restaurantimg {
   width: 20%;
   height: 20%;
   margin-left: 20px
@@ -59,4 +64,4 @@ form {
   border-color: yellow;
   border-radius: 20px;
   padding: 20px;
-}
+}*/
