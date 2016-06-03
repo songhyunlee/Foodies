@@ -3,8 +3,8 @@ var reviews = [
     food: 'american',
     biz: 'Cheezboard',
     description: 'Vegetarian pizzeria serving different pizza everyday...',
-    reviewer: 'Sarah Anderson',
-    review: 'The best vegetarian pizza I have ever had.',
+    reviewer: ['Sarah Anderson', 'Two', 'Three'],
+    review: ['The best vegetarian pizza I have ever had.', 'Lorem ipsum dolor sit amet', 'consectetur adipiscing elit, sed do'],
     rating: 5,
     address: '1 Culver Dr, Irvine, CA 92612',
     phone: '949-567-8901',
@@ -173,21 +173,26 @@ for (var i = 0; i < reviews.length; i++) {
 
 }
 
+function show(results) {
+  for (var i = 0; i < .length; i++) {
+    [i]
+  } 
+}
+
 var clicked = document.querySelectorAll('button.btn-sm');
 if(clicked.length>0) {
-  for (var j=0; j<clicked.length; j++) {
-  clicked[j].addEventListener('click', function view (theEvent) {
+  for (var j=0; j < clicked.length; j++) {
+  clicked[j].addEventListener('click', function view (theEvent) {
   var buttonId = theEvent.target.getAttribute('id');
   var results = [];
   for (var i = 0; i < reviews.length; i++) {
     if (reviews[i].id == buttonId) {
       results.push(reviews[i].review)
-      var message = document.getElementsByClassName('area')[0];
+      var infobox = theEvent.target.parentNode;
+      var message = infobox.getElementsByClassName('area')[0];
       message.textContent = reviews[i].reviewer + " said: " + "'" + reviews[i].review + "'";
-    } else {
-      return false;
-    }
   }
+}
 });
 }
 }
