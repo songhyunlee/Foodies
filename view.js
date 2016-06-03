@@ -173,24 +173,40 @@ for (var i = 0; i < reviews.length; i++) {
 
 }
 
-function show(results) {
+// Create HTML elements out of the reviews.
 
+function get(reviews) {
+  var set = [];
+  for (var i = 0; i < reviews.review.length; i++) {
+    var theReview = document.createElement('div');
+    theReview.textContent = reviews.review[i];
+    set.push(theReview);
+  }
+  return set;
+}
+
+function addReviews(theEvent) {
+
+  var buttonId = theEvent.target.getAttribute('id');
+
+  for (var i = 0; i < reviews.length; i++) {
+
+    if (reviews[i].id == buttonId) {
+
+      var list = get(reviews[i]);
+      var infobox = theEvent.target.parentNode;
+
+      for (var i = 0; i < list.length; i++) {
+        var message = infobox.getElementsByClassName('area')[0];
+        message.appendChild(list[i]);
+      }
+
+    }
+  }
 }
 
 var clicked = document.querySelectorAll('button.btn-sm');
-if(clicked.length>0) {
-  for (var j=0; j < clicked.length; j++) {
-  clicked[j].addEventListener('click', function view (theEvent) {
-  var buttonId = theEvent.target.getAttribute('id');
-  var results = [];
-  for (var i = 0; i < reviews.length; i++) {
-    if (reviews[i].id == buttonId) {
-      results.push(reviews[i].review)
-      var infobox = theEvent.target.parentNode;
-      var message = infobox.getElementsByClassName('area')[0];
-      message.textContent = reviews[i].reviewer + " said: " + "'" + reviews[i].review + "'";
-  }
-}
-});
-}
+
+for (var j=0; j < clicked.length; j++) {
+  clicked[j].addEventListener('click', addReviews);
 }
