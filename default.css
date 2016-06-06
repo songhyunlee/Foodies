@@ -86,11 +86,19 @@ i.fa.fa-star {
 }
 
 .addbox {
-  font-size: 17px;
+  font-size: 14px;
   color:gray;
   padding-top: 12px;
 }
 
+.row.rounded {
+  border-radius: 10px;
+  border-color: yellow;
+  margin-top: 5px;
+  color: green;
+  margin-left: 20px;
+
+}
 #results {
   padding-top: 50px;
   margin-left: auto;

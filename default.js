@@ -3,7 +3,7 @@ var reviews = [
     food: 'American',
     biz: 'Cheezboard',
     description: 'Vegetarian pizzeria serving different pizza everyday...',
-    reviewer: ['Sarah Anderson', 'Reviewer B', 'Reviewer C'],
+    reviewer: ['Sarah A.', 'Reviewer B', 'Reviewer C'],
     review: ['The best vegetarian pizza I have ever had.', 'Lorem ipsum dolor sit amet', 'consectetur adipiscing elit, sed do'],
     rating: 5,
     address: '1 Culver Dr, Irvine, CA 92612',
@@ -15,7 +15,7 @@ var reviews = [
     food: 'Chinese',
     biz: 'Great China',
     description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et ',
-    reviewer: ['John Doe', 'Reviewer B', 'Reviewer C'],
+    reviewer: ['John D.', 'Reviewer B', 'Reviewer C'],
     review: ['Delicious food, excellent service','Lorem ipsum dolor sit amet', 'consectetur adipiscing elit, sed do'],
     rating: 5,
     address: '3333 Bristol St, Costa Mesa CA 92603',
@@ -27,7 +27,7 @@ var reviews = [
     food: 'Seafood',
     biz: 'Oh Oyster',
     description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et ',
-    reviewer: ['John Doe', 'Reviewer B', 'Reviewer C'],
+    reviewer: ['John D.', 'Reviewer B', 'Reviewer C'],
     review: ['I ordered the daily special, but the oysters were not fresh at all.', 'Lorem ipsum dolor sit amet', 'consectetur adipiscing elit, sed do'],
     rating: 2,
     address: '1 Culver Dr, Irvine, CA 92612',
@@ -39,7 +39,7 @@ var reviews = [
     food: 'Italian',
     biz: 'Siciliana',
     description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et ',
-    reviewer: ['John Doe', 'Reviewer B', 'Reviewer C'],
+    reviewer: ['John D.', 'Reviewer B', 'Reviewer C'],
     review: ['I do not understand why people line up for this place. It was okay.','Lorem ipsum dolor sit amet', 'consectetur adipiscing elit, sed do'],
     rating: 3,
     address: '3333 Bristol St, Costa Mesa CA 92603',
@@ -51,7 +51,7 @@ var reviews = [
     food: 'Korean',
     biz: 'Baekjung',
     description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et ',
-    reviewer: ['John Doe', 'Reviewer B', 'Reviewer C'],
+    reviewer: ['John D.', 'Reviewer B', 'Reviewer C'],
     review: ['Korean BBQ. Sooo good. I definitely want to go back again.','Lorem ipsum dolor sit amet', 'consectetur adipiscing elit, sed do'],
     rating: 4,
     address: '1 Culver Dr, Irvine, CA 92612',
@@ -63,7 +63,7 @@ var reviews = [
     food: 'Japanese',
     biz: 'Sushi Sushi',
     description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et ',
-    reviewer: ['John Doe', 'Reviewer B', 'Reviewer C'],
+    reviewer: ['Sarah A.', 'Reviewer B', 'Reviewer C'],
     review: ['Very low quality. I would rather get sushi from Wholefoods.','Lorem ipsum dolor sit amet', 'consectetur adipiscing elit, sed do'],
     rating: 1,
     address: '1 Culver Dr, Irvine, CA 92612',
@@ -75,7 +75,7 @@ var reviews = [
     food: 'Mexican',
     biz: 'Tacos o Burritos',
     description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et ',
-    reviewer: ['John Doe', 'Reviewer B', 'Reviewer C'],
+    reviewer: ['John D.', 'Reviewer B', 'Reviewer C'],
     review: ['My favorite burritos in town. They should put more meat in them, though.','Lorem ipsum dolor sit amet', 'consectetur adipiscing elit, sed do'],
     rating: 5,
     address: '1 Culver Dr, Irvine, CA 92612',
@@ -87,7 +87,7 @@ var reviews = [
     food: 'Food truck',
     biz: 'Grab N Go',
     description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et ',
-    reviewer: ['John Doe', 'Reviewer B', 'Reviewer C'],
+    reviewer: ['John D.', 'Reviewer B', 'Reviewer C'],
     review: ['You do not want to miss out when their truck is in your area. It is just amazing. Order the cuban or the rubenesque.','Lorem ipsum dolor sit amet', 'consectetur adipiscing elit, sed do'],
     rating: 4,
     address: '1 Culver Dr, Irvine, CA 92612',
@@ -99,7 +99,7 @@ var reviews = [
     food: 'Dessert',
     biz: 'Matcha Heaven',
     description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et ',
-    reviewer: ['John Doe', 'Reviewer B', 'Reviewer C'],
+    reviewer: ['Sarah A.', 'Reviewer B', 'Reviewer C'],
     review: ['All their dessert is made with green tea. If you like matcha, this is your place for dessert.','Lorem ipsum dolor sit amet', 'consectetur adipiscing elit, sed do'],
     rating: 4,
     address: '1 Culver Dr, Irvine, CA 92612',
@@ -111,7 +111,7 @@ var reviews = [
     food: 'Coffee',
     biz: 'Coffee-to-go',
     description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et ',
-    reviewer: ['John Doe', 'Reviewer B', 'Reviewer C'],
+    reviewer: ['Sarah A.', 'Reviewer B', 'Reviewer C'],
     review: ['Never coming back to this coffeeshop. Dirty and rude service for very cheap quality coffee.','Lorem ipsum dolor sit amet', 'consectetur adipiscing elit, sed do'],
     rating: 1,
     address: '1 Culver Dr, Irvine, CA 92612',
@@ -407,9 +407,17 @@ for (var i = 0; i < reviews.length; i++) {
   biz.textContent = reviews[i].biz;
   description.setAttribute('class', 'description');
   description.textContent = reviews[i].description;
-  theButton.setAttribute('class', 'btn btn-default btn-xs');
-  theButton.setAttribute('id', 'readMore')
-  theButton.textContent = "Read More";
+  // theButton.setAttribute('class', 'btn btn-default btn-xs');
+  // theButton.setAttribute('id', 'readMore')
+  // theButton.textContent = "Read More";
+  var reviewBox = document.createElement('div');
+  reviewBox.setAttribute('class', 'row rounded');
+  var reviewOne = document.createElement('div');
+  var reviewTwo = document.createElement('div');
+  var reviewThree = document.createElement('div');
+  reviewOne.textContent = "'" + reviews[i].review[0] + "'" + " - " + reviews[i].reviewer[0];
+  reviewTwo.textContent = "'" + reviews[i].review[1] + "'" + " - " + reviews[i].reviewer[1];
+  reviewThree.textContent = "'" + reviews[i].review[2] + "'" + " - " + reviews[i].reviewer[2];
 
   listArea.appendChild(infobox);
   infobox.appendChild(row);
@@ -417,7 +425,12 @@ for (var i = 0; i < reviews.length; i++) {
   row.appendChild(info);
   row.appendChild(addbox);
   infobox.appendChild(description);
-  infobox.appendChild(theButton);
+  infobox.appendChild(reviewBox);
+  reviewBox.appendChild(reviewOne);
+  reviewBox.appendChild(reviewTwo);
+  reviewBox.appendChild(reviewThree);
+
+  // infobox.appendChild(theButton);
   info.appendChild(biz);
   info.appendChild(rateStar);
   image.appendChild(food);
@@ -457,28 +470,8 @@ for (var i = 0; i < reviews.length; i++) {
   } else if (reviews[i].rating === 1) {
     rateStar.appendChild(starOne);
   };
-  //add eventlistener for 'read more' buttons.
-  document.getElementById('readMore').addEventListener('click', function (){
-    var containerNew = document.getElementById('new');
-    while (containerNew.firstChild) {
-      containerNew.removeChild(containerNew.firstChild);
-    };
-    // var buttonId = theEvent.target.getAttribute('id');
-    //   for (var i = 0; i < reviews.length; i++) {
-    //
-    //     if (reviews[i].id == buttonId) {
-    //
-    //       var list = get(reviews[i]);
-    //       var infobox = theEvent.target.parentNode;
-    //
-    //       for (var i = 0; i < list.length; i++) {
-    //         var message = infobox.getElementsByClassName('panel-body')[0];
-    //         message.appendChild(list[i]);
-    //       }
-    //
-    //     }
+  }
+});
 
-  });
-}
 
-}); //end of everything under 'reviews' button from main search page//
+ //end of everything under 'reviews' button from main search page//
