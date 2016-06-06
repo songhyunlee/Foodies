@@ -358,10 +358,3 @@ document.getElementById("term").addEventListener("keydown", function inputSearch
 
     };
 });
-
-
-
-//Change below function to use when the user searches for another restaurant:
-// var removeEl = document.getElementsByClassName('container recommended')[0];
-// var containerEl = removeEl.parentNode;
-// containerEl.removeChild(removeEl);
