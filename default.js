@@ -358,3 +358,6 @@ document.getElementById("term").addEventListener("keydown", function inputSearch
 
     };
 });
+
+
+//---#1 'Search for Reviews' Ends---//
