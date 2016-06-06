@@ -173,11 +173,24 @@ myElement.addEventListener('click', function search(e) {
   thePanel.appendChild(panelHeading);
   thePanel.appendChild(panelBody);
   item.appendChild(thePanel);
+
   if ( matched ) {
     panelHeading.textContent = "Showing results for: " + "'"+term.value +"'. " ;
     var bizName = document.createElement('h4');
     bizName.textContent = matched.biz;
     bizName.setAttribute('class', 'biz');
+    var rateStar = document.createElement('div');
+    rateStar.setAttribute('class', 'rateStar');
+    var starOne = document.createElement('i');
+    starOne.setAttribute('class', 'fa fa-star');
+    var starTwo = document.createElement('i');
+    starTwo.setAttribute('class', 'fa fa-star');
+    var starThree = document.createElement('i');
+    starThree.setAttribute('class', 'fa fa-star');
+    var starFour = document.createElement('i');
+    starFour.setAttribute('class', 'fa fa-star');
+    var starFive = document.createElement('i');
+    starFive.setAttribute('class', 'fa fa-star');
     var bizCategory = document.createElement('div');
     bizCategory.textContent = "Category: " + matched.food;
     bizCategory.setAttribute('class', 'category');
@@ -197,7 +210,30 @@ myElement.addEventListener('click', function search(e) {
     reviewTwo.textContent = "'" + matched.review[1] + "'" + " - " + matched.reviewer[1];
     reviewThree.textContent = "'" + matched.review[2] + "'" + " - " + matched.reviewer[2];
 
+    if (matched.rating === 5) {
+      rateStar.appendChild(starOne);
+      rateStar.appendChild(starTwo);
+      rateStar.appendChild(starThree);
+      rateStar.appendChild(starFour);
+      rateStar.appendChild(starFive);
+    } else if (matched.rating === 4) {
+      rateStar.appendChild(starOne);
+      rateStar.appendChild(starTwo);
+      rateStar.appendChild(starThree);
+      rateStar.appendChild(starFour);
+    } else if (matched.rating === 3) {
+      rateStar.appendChild(starOne);
+      rateStar.appendChild(starTwo);
+      rateStar.appendChild(starThree);
+    } else if (matched.rating === 2) {
+      rateStar.appendChild(starOne);
+      rateStar.appendChild(starTwo);
+    } else if (matched.rating === 1) {
+      rateStar.appendChild(starOne);
+    };
+
     panelBody.appendChild(bizName);
+    panelBody.appendChild(rateStar);
     panelBody.appendChild(bizCategory);
     panelBody.appendChild(bizWhere);
     panelBody.appendChild(bizNumber);
@@ -239,11 +275,24 @@ document.getElementById("term").addEventListener("keydown", function inputSearch
     thePanel.appendChild(panelHeading);
     thePanel.appendChild(panelBody);
     item.appendChild(thePanel);
+
     if ( matched ) {
       panelHeading.textContent = "Showing results for: " + "'"+term.value +"'. " ;
       var bizName = document.createElement('h4');
       bizName.textContent = matched.biz;
       bizName.setAttribute('class', 'biz');
+      var rateStar = document.createElement('div');
+      rateStar.setAttribute('class', 'rateStar');
+      var starOne = document.createElement('i');
+      starOne.setAttribute('class', 'fa fa-star');
+      var starTwo = document.createElement('i');
+      starTwo.setAttribute('class', 'fa fa-star');
+      var starThree = document.createElement('i');
+      starThree.setAttribute('class', 'fa fa-star');
+      var starFour = document.createElement('i');
+      starFour.setAttribute('class', 'fa fa-star');
+      var starFive = document.createElement('i');
+      starFive.setAttribute('class', 'fa fa-star');
       var bizCategory = document.createElement('div');
       bizCategory.textContent = "Category: " + matched.food;
       bizCategory.setAttribute('class', 'category');
@@ -263,7 +312,30 @@ document.getElementById("term").addEventListener("keydown", function inputSearch
       reviewTwo.textContent = "'" + matched.review[1] + "'" + " - " + matched.reviewer[1];
       reviewThree.textContent = "'" + matched.review[2] + "'" + " - " + matched.reviewer[2];
 
+      if (matched.rating === 5) {
+        rateStar.appendChild(starOne);
+        rateStar.appendChild(starTwo);
+        rateStar.appendChild(starThree);
+        rateStar.appendChild(starFour);
+        rateStar.appendChild(starFive);
+      } else if (matched.rating === 4) {
+        rateStar.appendChild(starOne);
+        rateStar.appendChild(starTwo);
+        rateStar.appendChild(starThree);
+        rateStar.appendChild(starFour);
+      } else if (matched.rating === 3) {
+        rateStar.appendChild(starOne);
+        rateStar.appendChild(starTwo);
+        rateStar.appendChild(starThree);
+      } else if (matched.rating === 2) {
+        rateStar.appendChild(starOne);
+        rateStar.appendChild(starTwo);
+      } else if (matched.rating === 1) {
+        rateStar.appendChild(starOne);
+      };
+
       panelBody.appendChild(bizName);
+      panelBody.appendChild(rateStar);
       panelBody.appendChild(bizCategory);
       panelBody.appendChild(bizWhere);
       panelBody.appendChild(bizNumber);

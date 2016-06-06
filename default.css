@@ -39,6 +39,10 @@ form {
   color: green;
 }
 
+i.fa.fa-star {
+  color: green;
+}
+
 .category {
   font-size: 12px;
 }
