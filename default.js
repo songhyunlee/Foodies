@@ -407,7 +407,8 @@ for (var i = 0; i < reviews.length; i++) {
   biz.textContent = reviews[i].biz;
   description.setAttribute('class', 'description');
   description.textContent = reviews[i].description;
-  theButton.setAttribute('class', 'btn btn-default btn-xs inline');
+  theButton.setAttribute('class', 'btn btn-default btn-xs');
+  theButton.setAttribute('id', 'readMore')
   theButton.textContent = "Read More";
 
   listArea.appendChild(infobox);
@@ -456,14 +457,28 @@ for (var i = 0; i < reviews.length; i++) {
   } else if (reviews[i].rating === 1) {
     rateStar.appendChild(starOne);
   };
+  //add eventlistener for 'read more' buttons.
+  document.getElementById('readMore').addEventListener('click', function (){
+    var containerNew = document.getElementById('new');
+    while (containerNew.firstChild) {
+      containerNew.removeChild(containerNew.firstChild);
+    };
+    // var buttonId = theEvent.target.getAttribute('id');
+    //   for (var i = 0; i < reviews.length; i++) {
+    //
+    //     if (reviews[i].id == buttonId) {
+    //
+    //       var list = get(reviews[i]);
+    //       var infobox = theEvent.target.parentNode;
+    //
+    //       for (var i = 0; i < list.length; i++) {
+    //         var message = infobox.getElementsByClassName('panel-body')[0];
+    //         message.appendChild(list[i]);
+    //       }
+    //
+    //     }
 
+  });
+}
 
-  var reviewOne = document.createElement('div');
-  var reviewTwo = document.createElement('div');
-  var reviewThree = document.createElement('div');
-
-  reviewTwo.textContent = "'" + reviews[i].review[1] + "'" + " - " + reviews[i].reviewer[1];
-  reviewThree.textContent = "'" + reviews[i].review[2] + "'" + " - " + reviews[i].reviewer[2];
-
-};
-})
+}); //end of everything under 'reviews' button from main search page//
