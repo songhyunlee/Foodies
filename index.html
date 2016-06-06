@@ -11,7 +11,7 @@
     <div class="header">
       <img id="foodies" src="foodies-logo.png">
     </div>
-    <div class="container searchbox">
+    <div class="container" id="searchbox">
       <div class="input-group col-xs-6 col-xs-offset-3">
         <input id="term" type="text" class="form-control search" onkeyup"inputSearch(event)" name="term" placeholder="Mexican, Food truck, Cheezboard" width=100%/>
         <span class="input-group-btn">
@@ -20,9 +20,9 @@
           <button id="allReviews" class="btn btn-succes text-right" type="button" name="buttonR" />Reviews</button>
         </span>
       </div>
-    </div>
-    <div class="col-xs-offset-3 col-xs-6 resultsArea">
-      <div id = "results"></div>
+      <div class="col-xs-offset-3 col-xs-6" id="resultsArea">
+        <div id = "results"></div>
+      </div>
     </div>
   <script src="default.js"></script>
   </body>

@@ -361,3 +361,129 @@ document.getElementById("term").addEventListener("keydown", function inputSearch
 
 
 //---#1 'Search for Reviews' Ends---//
+
+//Listen for the click of the 'reviews' button to lead to a page of reviews.
+document.getElementById('allReviews').addEventListener('click', function reviewPage(){
+  //First clear body except header.
+
+    var containerEl = document.getElementById('searchbox');
+    while (containerEl.firstChild) {
+      containerEl.removeChild(containerEl.firstChild);
+    };
+
+//Then create the elements.
+for (var i = 0; i < reviews.length; i++) {
+
+  var infobox = document.createElement('div');
+  var row = document.createElement('div');
+  var image = document.createElement('p');
+  var food = document.createElement('img');
+  var addbox = document.createElement('div');
+  var address = document.createElement('div');
+  var phone = document.createElement('div')
+  var info = document.createElement('div');
+  var biz = document.createElement('h4');
+  var rating = document.createElement('div');
+  var score = document.createElement('div');
+  var description = document.createElement('div');
+  var theButton = document.createElement('button');
+  var area = document.createElement('div');
+  var thePanel = document.createElement('div');
+  var panelHeading = document.createElement('div');
+  var panelBody = document.createElement('div');
+  area.setAttribute('class', 'area');
+  thePanel.setAttribute('class', 'panel panel-success hide');
+  panelHeading.setAttribute('class', 'panel-heading');
+  panelBody.setAttribute('class', 'panel-body');
+  infobox.setAttribute('class', 'infobox');
+  row.setAttribute('class', 'row');
+  image.setAttribute('class', 'col-xs-3');
+  food.setAttribute('src', reviews[i].image);
+  food.setAttribute('class', 'img-responsive');
+  addbox.setAttribute('class', 'addbox col-xs-3');
+  address.textContent = reviews[i].address;
+  phone.textContent = reviews[i].phone;
+  info.setAttribute('class', 'info col-xs-6');
+  biz.setAttribute('class', 'biz');
+  biz.textContent = reviews[i].biz;
+  score.textContent = "Rating: " + reviews[i].rating ;
+  description.setAttribute('class', 'description');
+  description.textContent = reviews[i].description ;
+  theButton.setAttribute('class', 'btn btn-default btn-sm center-block');
+  theButton.setAttribute('id', reviews[i].id);
+  theButton.textContent = "Reviews";
+  var restaurants = document.createElement('div');
+  restaurants.setAttribute('class', 'row');
+  restaurants.appendChild(infobox);
+  infobox.appendChild(row);
+  row.appendChild(image);
+  row.appendChild(info);
+  row.appendChild(addbox);
+  info.appendChild(biz);
+  info.appendChild(rating);
+  info.appendChild(description);
+  image.appendChild(food);
+  addbox.appendChild(address);
+  addbox.appendChild(phone);
+  rating.appendChild(score);
+  infobox.appendChild(theButton);
+  infobox.appendChild(area);
+  area.appendChild(thePanel);
+  thePanel.appendChild(panelHeading);
+  thePanel.appendChild(panelBody);
+
+  var rateStar = document.createElement('div');
+  rateStar.setAttribute('class', 'rateStar');
+  var starOne = document.createElement('i');
+  starOne.setAttribute('class', 'fa fa-star');
+  var starTwo = document.createElement('i');
+  starTwo.setAttribute('class', 'fa fa-star');
+  var starThree = document.createElement('i');
+  starThree.setAttribute('class', 'fa fa-star');
+  var starFour = document.createElement('i');
+  starFour.setAttribute('class', 'fa fa-star');
+  var starFive = document.createElement('i');
+  starFive.setAttribute('class', 'fa fa-star');
+
+  if (reviews[i].rating === 5) {
+    rateStar.appendChild(starOne);
+    rateStar.appendChild(starTwo);
+    rateStar.appendChild(starThree);
+    rateStar.appendChild(starFour);
+    rateStar.appendChild(starFive);
+  } else if (reviews[i].rating === 4) {
+    rateStar.appendChild(starOne);
+    rateStar.appendChild(starTwo);
+    rateStar.appendChild(starThree);
+    rateStar.appendChild(starFour);
+  } else if (reviews[i].rating === 3) {
+    rateStar.appendChild(starOne);
+    rateStar.appendChild(starTwo);
+    rateStar.appendChild(starThree);
+  } else if (reviews[i].rating === 2) {
+    rateStar.appendChild(starOne);
+    rateStar.appendChild(starTwo);
+  } else if (reviews[i].rating === 1) {
+    rateStar.appendChild(starOne);
+  };
+
+  var reviewOne = document.createElement('div');
+  var reviewTwo = document.createElement('div');
+  var reviewThree = document.createElement('div');
+  reviewOne.textContent = "'" + reviews[i].review[0] + "'" + " - " + reviews[i].reviewer[0];
+  reviewTwo.textContent = "'" + reviews[i].review[1] + "'" + " - " + reviews[i].reviewer[1];
+  reviewThree.textContent = "'" + reviews[i].review[2] + "'" + " - " + reviews[i].reviewer[2];
+
+  // panelBody.appendChild(bizName);
+  // panelBody.appendChild(rateStar);
+  // panelBody.appendChild(bizCategory);
+  // panelBody.appendChild(bizWhere);
+  // panelBody.appendChild(bizNumber);
+  // panelBody.appendChild(bizAbout);
+  // panelBody.appendChild(panelSub);
+  // panelSub.appendChild(reviewOne);
+  // panelSub.appendChild(reviewTwo);
+  // panelSub.appendChild(reviewThree);
+
+};
+})
