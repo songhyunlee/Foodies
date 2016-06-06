@@ -28,6 +28,18 @@ form {
   padding-top: 20px;
 }
 
+h1 {
+  margin-left: 200px;
+}
+.container#new{
+  width: 80%;
+  height: 80%;
+}
+
+#new {
+  padding-top: 20px;
+}
+
 #searchbox {
   padding-top: 20px;
 }
@@ -52,37 +64,7 @@ form {
 
 i.fa.fa-star {
   color: green;
-}
-
-.category {
-  font-size: 12px;
-}
-
-.about {
-  font-size: 12px;
-}
-
-.addbox {
-  font-size: 12px;
-  color:gray;
-}
-#results {
-  padding-top: 50px;
-  margin-left: auto;
-  margin-right: auto;
-}
-/*#restaurantimg {
-  width: 20%;
-  height: 20%;
-  margin-left: 20px
-}
-
-.restaurants {
-  color: green;
-}
-
-.jumbotron p {
-  font-size: 20px;
+  font-size: 17px;
 }
 
 .infobox {
@@ -90,4 +72,43 @@ i.fa.fa-star {
   border-color: yellow;
   border-radius: 20px;
   padding: 20px;
-}*/
+  margin-top: 10px;
+  width: 70%;
+  height: 70%;
+}
+
+.category {
+  font-size: 12px;
+}
+
+.about {
+  font-size: 15px;
+}
+
+.addbox {
+  font-size: 17px;
+  color:gray;
+  padding-top: 12px;
+}
+
+#results {
+  padding-top: 50px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+#restaurantimg {
+  width: 150px;
+  height: 100px;
+  margin-left: 20px
+}
+
+.description {
+  padding-left: 20px;
+  font-size: 17px;
+}
+
+.btn.btn-default.btn-xs {
+  color: green;
+  margin-left:20px;
+}
