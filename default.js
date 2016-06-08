@@ -303,12 +303,15 @@ btnClicked.addEventListener('click', function(e) {
       info.appendChild(phone);
       info.appendChild(description);
 
-      for (var k = 0; k < reviews[i].review[k]; k++) {
-        var reviewOne = document.createElement('div');
-        reviewOne.setAttribute('class', 'reviewbox');
-        reviewOne.textContent = reviews[i].review[j];
-        theContainer.appendChild(reviewOne);
-      }
+      reviews[i].review.forEach( function(review) {
+
+        for (var j = 0; j < reviews[i].review[j].length; j++) {
+          var reviewOne = document.createElement('div');
+          reviewOne.setAttribute('class', 'reviewbox');
+          reviewOne.textContent = reviews[i].review[j];
+          theContainer.appendChild(reviewOne);
+          }
+      });
 
       rateStar.setAttribute('class', 'rateStar');
       var allStars = theContainer.getElementsByClassName('rateStar')[0];
