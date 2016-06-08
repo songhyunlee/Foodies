@@ -68,7 +68,7 @@ var reviews = [
     rating: 1,
     address: '1 Culver Dr, Irvine, CA 92612',
     phone: '949-567-8901',
-    id: 'italian',
+    id: 'japnese',
     image: 'sushi.jpg',
   },
   {
@@ -238,6 +238,7 @@ function showResults(e) {
 
   var results = document.getElementById('results');
   results.appendChild(heading);
+
   for (var i = 0; i < matches.length; i++) {
     theRestaurant = restaurant(matches[i]);
     results.appendChild(theRestaurant);
@@ -262,17 +263,14 @@ btnClicked.addEventListener('click', function(e) {
   console.log(e.target.getAttribute('id'));
 
   var theContainer = document.getElementById('reviews');
-  console.log(reviews.length);
   for (var i = 0; i < reviews.length; i++) {
 
     var buttonId = e.target.getAttribute('id');
     if (buttonId == reviews[i].id) {
-      console.log('here');
-      var infobox = document.createElement('div');
+
       var row = document.createElement('div');
       var image = document.createElement('p');
       var food = document.createElement('img');
-      var addbox = document.createElement('div');
       var address = document.createElement('div');
       var phone = document.createElement('div')
       var info = document.createElement('div');
@@ -280,221 +278,212 @@ btnClicked.addEventListener('click', function(e) {
       var rateStar = document.createElement('div');
       var description = document.createElement('div');
 
-      infobox.setAttribute('class', 'infobox  col-xs-offset-2');
       row.setAttribute('class', 'row');
       image.setAttribute('class', 'col-xs-3');
       image.setAttribute('id', 'restaurantimg')
       food.setAttribute('src', reviews[i].image);
       food.setAttribute('class', 'img-responsive img-rounded');
-      addbox.setAttribute('class', 'addbox col-xs-3');
       address.textContent = reviews[i].address;
+      address.setAttribute('class', 'gray');
       phone.textContent = reviews[i].phone;
+      phone.setAttribute('class','gray');
       info.setAttribute('class', 'info col-xs-6');
       biz.setAttribute('class', 'biz');
       biz.textContent = reviews[i].biz;
       description.setAttribute('class', 'description');
       description.textContent = reviews[i].description;
 
-
-      var reviewBox = document.createElement('div');
-      reviewBox.setAttribute('class', 'row reviewbox');
-      var reviewOne = document.createElement('div');
-      var reviewTwo = document.createElement('div');
-      var reviewThree = document.createElement('div');
-      reviewOne.textContent = "'" + reviews[i].review[0];
-      reviewTwo.textContent = "'" + reviews[i].review[1];
-      reviewThree.textContent = "'" + reviews[i].review[2];
-
       theContainer.appendChild(row);
       row.appendChild(image);
       row.appendChild(info);
-      row.appendChild(addbox);
-      theContainer.appendChild(description);
-      theContainer.appendChild(reviewBox);
-      reviewBox.appendChild(reviewOne);
-      reviewBox.appendChild(reviewTwo);
-      reviewBox.appendChild(reviewThree);
-
       info.appendChild(biz);
       info.appendChild(rateStar);
       image.appendChild(food);
-      addbox.appendChild(address);
-      addbox.appendChild(phone);
+      info.appendChild(address);
+      info.appendChild(phone);
+      info.appendChild(description);
+
+      for (var k = 0; k < reviews[i].review[k]; k++) {
+        var reviewOne = document.createElement('div');
+        reviewOne.setAttribute('class', 'reviewbox');
+        reviewOne.textContent = reviews[i].review[j];
+        theContainer.appendChild(reviewOne);
+      }
 
       rateStar.setAttribute('class', 'rateStar');
-      var allStars = info.getElementsByClassName('rateStar')[0];
-      for (var i = 0; i < reviews[i].rating; i++) {
+      var allStars = theContainer.getElementsByClassName('rateStar')[0];
+      for (var j = 0; j < reviews[i].rating; j++) {
         var theStar = document.createElement('i');
         theStar.setAttribute('class', 'fa fa-star');
         rateStar.appendChild(theStar);
-      };
-    }
-  };
+        };
+      }
+    };
   });
 
-function swap(current, next) {
-  var theCurrent = document.getElementsByClassName(current)[0];
-  theCurrent.classList.remove('current');
-  theCurrent.classList.add('hide');
+  function swap(current, next) {
+    var theCurrent = document.getElementsByClassName(current)[0];
+    theCurrent.classList.remove('current');
+    theCurrent.classList.add('hide');
 
-  var theNext = document.getElementById(next);
-  theNext.classList.add('current');
-  theNext.classList.remove('hide');
-}
-
-
-
-// Add a review button to each restaurant.
-// Wait for clicks on the button. Then hide the search results and show the reviews page.
+    var theNext = document.getElementById(next);
+    theNext.classList.add('current');
+    theNext.classList.remove('hide');
+  }
 
 
-// //---#1 'Search for Reviews' Ends---//
-//
-// //Listen for the click of the 'reviews' button to lead to a page of reviews.
-// document.getElementById('allReviews').addEventListener('click', function reviewPage() {
-//   //First clear body except header.
-//
-//   var containerEl = document.getElementById('searchbox');
-//   while (containerEl.firstChild) {
-//     containerEl.removeChild(containerEl.firstChild);
-//   };
-//
-//   var listArea = document.getElementById('new');
-//   var reviewHeader = document.createElement('h1');
-//   reviewHeader.textContent = 'Restaurant Reviews';
-//   listArea.appendChild(reviewHeader);
-//
-//   //Then create the elements.
-//   for (var i = 0; i < reviews.length; i++) {
-//
-//     var infobox = document.createElement('div');
-//     var row = document.createElement('div');
-//     var image = document.createElement('p');
-//     var food = document.createElement('img');
-//     var addbox = document.createElement('div');
-//     var address = document.createElement('div');
-//     var phone = document.createElement('div')
-//     var info = document.createElement('div');
-//     var biz = document.createElement('h3');
-//     var rateStar = document.createElement('div');
-//     var description = document.createElement('div');
-//     var addButton = document.createElement('button');
-//
-//     infobox.setAttribute('class', 'infobox  col-xs-offset-2');
-//     row.setAttribute('class', 'row');
-//     image.setAttribute('class', 'col-xs-3');
-//     image.setAttribute('id', 'restaurantimg')
-//     food.setAttribute('src', reviews[i].image);
-//     food.setAttribute('class', 'img-responsive img-rounded');
-//     addbox.setAttribute('class', 'addbox col-xs-3');
-//     address.textContent = reviews[i].address;
-//     phone.textContent = reviews[i].phone;
-//     info.setAttribute('class', 'info col-xs-6');
-//     biz.setAttribute('class', 'biz');
-//     biz.textContent = reviews[i].biz;
-//     description.setAttribute('class', 'description');
-//     description.textContent = reviews[i].description;
-//     addButton.setAttribute('class','btn btn-default btn-sm center-block');
-//     addButton.textContent = 'Add a Review';
-//     addButton.setAttribute('id', reviews[i].id);
-//
-//     var reviewBox = document.createElement('div');
-//     reviewBox.setAttribute('class', 'row reviewbox');
-//     var reviewOne = document.createElement('div');
-//     var reviewTwo = document.createElement('div');
-//     var reviewThree = document.createElement('div');
-//     reviewOne.textContent = "'" + reviews[i].review[0] + "'" + " - " + reviews[i].reviewer[0];
-//     reviewTwo.textContent = "'" + reviews[i].review[1] + "'" + " - " + reviews[i].reviewer[1];
-//     reviewThree.textContent = "'" + reviews[i].review[2] + "'" + " - " + reviews[i].reviewer[2];
-//
-//     listArea.appendChild(infobox);
-//     infobox.appendChild(row);
-//     row.appendChild(image);
-//     row.appendChild(info);
-//     row.appendChild(addbox);
-//     infobox.appendChild(description);
-//     infobox.appendChild(reviewBox);
-//     reviewBox.appendChild(reviewOne);
-//     reviewBox.appendChild(reviewTwo);
-//     reviewBox.appendChild(reviewThree);
-//     infobox.appendChild(addButton);
-//
-//     info.appendChild(biz);
-//     info.appendChild(rateStar);
-//     image.appendChild(food);
-//     addbox.appendChild(address);
-//     addbox.appendChild(phone);
-//
-//     rateStar.setAttribute('class', 'rateStar');
-//     var starOne = document.createElement('i');
-//     starOne.setAttribute('class', 'fa fa-star');
-//     var starTwo = document.createElement('i');
-//     starTwo.setAttribute('class', 'fa fa-star');
-//     var starThree = document.createElement('i');
-//     starThree.setAttribute('class', 'fa fa-star');
-//     var starFour = document.createElement('i');
-//     starFour.setAttribute('class', 'fa fa-star');
-//     var starFive = document.createElement('i');
-//     starFive.setAttribute('class', 'fa fa-star');
-//
-//     if (reviews[i].rating === 5) {
-//       rateStar.appendChild(starOne);
-//       rateStar.appendChild(starTwo);
-//       rateStar.appendChild(starThree);
-//       rateStar.appendChild(starFour);
-//       rateStar.appendChild(starFive);
-//     } else if (reviews[i].rating === 4) {
-//       rateStar.appendChild(starOne);
-//       rateStar.appendChild(starTwo);
-//       rateStar.appendChild(starThree);
-//       rateStar.appendChild(starFour);
-//     } else if (reviews[i].rating === 3) {
-//       rateStar.appendChild(starOne);
-//       rateStar.appendChild(starTwo);
-//       rateStar.appendChild(starThree);
-//     } else if (reviews[i].rating === 2) {
-//       rateStar.appendChild(starOne);
-//       rateStar.appendChild(starTwo);
-//     } else if (reviews[i].rating === 1) {
-//       rateStar.appendChild(starOne);
-//     };
-//   };
-//
-//   var clicked = document.querySelectorAll('button.btn-sm');
-//
-//   for (var j=0; j < clicked.length; j++) {
-//     clicked[j].addEventListener('click', addText);
-//   };
-//
-//   function addText(theEvent) {
-//
-//     var infobox = theEvent.target.parentNode;
-//     var textBox = document.createElement('textarea');
-//     var submitButton = document.createElement('button');
-//
-//     textBox.setAttribute('class', 'form-control');
-//     textBox.setAttribute('rows', '5');
-//     textBox.setAttribute('placeholder', 'Start writing your review here...');
-//
-//     submitButton.textContent = 'Submit';
-//     submitButton.setAttribute('class','btn btn-default btn-sm center-block');
-//     submitButton.textContent = 'Submit';
-//     // submitButton.setAttribute('id', clicked[j].id);  -> clicked[j] is undefined?
-//
-//     infobox.appendChild(textBox);
-//     infobox.appendChild(submitButton);
-//     //Remove the 'add a review' button.
-//     //Would it be a problem if I remove this button with the id that matches the restaurant?
-//     //How can I make all the 'add a review' buttons disappear when they're clicked?
-//     var removeB = document.getElementById('cheezboard');
-//     var containerB = removeB.parentNode;
-//     containerB.removeChild(removeB);
-//
-//   };
-//
-// });
-//
-//
+
+  // Add a review button to each restaurant.
+  // Wait for clicks on the button. Then hide the search results and show the reviews page.
 
 
-//end of everything under 'reviews' button from main search page//
+  // //---#1 'Search for Reviews' Ends---//
+  //
+  // //Listen for the click of the 'reviews' button to lead to a page of reviews.
+  // document.getElementById('allReviews').addEventListener('click', function reviewPage() {
+  //   //First clear body except header.
+  //
+  //   var containerEl = document.getElementById('searchbox');
+  //   while (containerEl.firstChild) {
+  //     containerEl.removeChild(containerEl.firstChild);
+  //   };
+  //
+  //   var listArea = document.getElementById('new');
+  //   var reviewHeader = document.createElement('h1');
+  //   reviewHeader.textContent = 'Restaurant Reviews';
+  //   listArea.appendChild(reviewHeader);
+  //
+  //   //Then create the elements.
+  //   for (var i = 0; i < reviews.length; i++) {
+  //
+  //     var infobox = document.createElement('div');
+  //     var row = document.createElement('div');
+  //     var image = document.createElement('p');
+  //     var food = document.createElement('img');
+  //     var addbox = document.createElement('div');
+  //     var address = document.createElement('div');
+  //     var phone = document.createElement('div')
+  //     var info = document.createElement('div');
+  //     var biz = document.createElement('h3');
+  //     var rateStar = document.createElement('div');
+  //     var description = document.createElement('div');
+  //     var addButton = document.createElement('button');
+  //
+  //     infobox.setAttribute('class', 'infobox  col-xs-offset-2');
+  //     row.setAttribute('class', 'row');
+  //     image.setAttribute('class', 'col-xs-3');
+  //     image.setAttribute('id', 'restaurantimg')
+  //     food.setAttribute('src', reviews[i].image);
+  //     food.setAttribute('class', 'img-responsive img-rounded');
+  //     addbox.setAttribute('class', 'addbox col-xs-3');
+  //     address.textContent = reviews[i].address;
+  //     phone.textContent = reviews[i].phone;
+  //     info.setAttribute('class', 'info col-xs-6');
+  //     biz.setAttribute('class', 'biz');
+  //     biz.textContent = reviews[i].biz;
+  //     description.setAttribute('class', 'description');
+  //     description.textContent = reviews[i].description;
+  //     addButton.setAttribute('class','btn btn-default btn-sm center-block');
+  //     addButton.textContent = 'Add a Review';
+  //     addButton.setAttribute('id', reviews[i].id);
+  //
+  //     var reviewBox = document.createElement('div');
+  //     reviewBox.setAttribute('class', 'row reviewbox');
+  //     var reviewOne = document.createElement('div');
+  //     var reviewTwo = document.createElement('div');
+  //     var reviewThree = document.createElement('div');
+  //     reviewOne.textContent = "'" + reviews[i].review[0] + "'" + " - " + reviews[i].reviewer[0];
+  //     reviewTwo.textContent = "'" + reviews[i].review[1] + "'" + " - " + reviews[i].reviewer[1];
+  //     reviewThree.textContent = "'" + reviews[i].review[2] + "'" + " - " + reviews[i].reviewer[2];
+  //
+  //     listArea.appendChild(infobox);
+  //     infobox.appendChild(row);
+  //     row.appendChild(image);
+  //     row.appendChild(info);
+  //     row.appendChild(addbox);
+  //     infobox.appendChild(description);
+  //     infobox.appendChild(reviewBox);
+  //     reviewBox.appendChild(reviewOne);
+  //     reviewBox.appendChild(reviewTwo);
+  //     reviewBox.appendChild(reviewThree);
+  //     infobox.appendChild(addButton);
+  //
+  //     info.appendChild(biz);
+  //     info.appendChild(rateStar);
+  //     image.appendChild(food);
+  //     addbox.appendChild(address);
+  //     addbox.appendChild(phone);
+  //
+  //     rateStar.setAttribute('class', 'rateStar');
+  //     var starOne = document.createElement('i');
+  //     starOne.setAttribute('class', 'fa fa-star');
+  //     var starTwo = document.createElement('i');
+  //     starTwo.setAttribute('class', 'fa fa-star');
+  //     var starThree = document.createElement('i');
+  //     starThree.setAttribute('class', 'fa fa-star');
+  //     var starFour = document.createElement('i');
+  //     starFour.setAttribute('class', 'fa fa-star');
+  //     var starFive = document.createElement('i');
+  //     starFive.setAttribute('class', 'fa fa-star');
+  //
+  //     if (reviews[i].rating === 5) {
+  //       rateStar.appendChild(starOne);
+  //       rateStar.appendChild(starTwo);
+  //       rateStar.appendChild(starThree);
+  //       rateStar.appendChild(starFour);
+  //       rateStar.appendChild(starFive);
+  //     } else if (reviews[i].rating === 4) {
+  //       rateStar.appendChild(starOne);
+  //       rateStar.appendChild(starTwo);
+  //       rateStar.appendChild(starThree);
+  //       rateStar.appendChild(starFour);
+  //     } else if (reviews[i].rating === 3) {
+  //       rateStar.appendChild(starOne);
+  //       rateStar.appendChild(starTwo);
+  //       rateStar.appendChild(starThree);
+  //     } else if (reviews[i].rating === 2) {
+  //       rateStar.appendChild(starOne);
+  //       rateStar.appendChild(starTwo);
+  //     } else if (reviews[i].rating === 1) {
+  //       rateStar.appendChild(starOne);
+  //     };
+  //   };
+  //
+  //   var clicked = document.querySelectorAll('button.btn-sm');
+  //
+  //   for (var j=0; j < clicked.length; j++) {
+  //     clicked[j].addEventListener('click', addText);
+  //   };
+  //
+  //   function addText(theEvent) {
+  //
+  //     var infobox = theEvent.target.parentNode;
+  //     var textBox = document.createElement('textarea');
+  //     var submitButton = document.createElement('button');
+  //
+  //     textBox.setAttribute('class', 'form-control');
+  //     textBox.setAttribute('rows', '5');
+  //     textBox.setAttribute('placeholder', 'Start writing your review here...');
+  //
+  //     submitButton.textContent = 'Submit';
+  //     submitButton.setAttribute('class','btn btn-default btn-sm center-block');
+  //     submitButton.textContent = 'Submit';
+  //     // submitButton.setAttribute('id', clicked[j].id);  -> clicked[j] is undefined?
+  //
+  //     infobox.appendChild(textBox);
+  //     infobox.appendChild(submitButton);
+  //     //Remove the 'add a review' button.
+  //     //Would it be a problem if I remove this button with the id that matches the restaurant?
+  //     //How can I make all the 'add a review' buttons disappear when they're clicked?
+  //     var removeB = document.getElementById('cheezboard');
+  //     var containerB = removeB.parentNode;
+  //     containerB.removeChild(removeB);
+  //
+  //   };
+  //
+  // });
+  //
+  //
+
+
+  //end of everything under 'reviews' button from main search page//

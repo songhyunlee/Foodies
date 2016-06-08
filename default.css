@@ -83,10 +83,10 @@ i.fa.fa-star {
   font-size: 15px;
 }
 
-.addbox {
+.gray {
   font-size: 14px;
   color:gray;
-  padding-top: 12px;
+  padding-top: 5px;
 }
 
 .btn.btn-default.btn-sm.center-block {
@@ -97,16 +97,14 @@ i.fa.fa-star {
   margin-left: auto;
   margin-right: auto;
 }
-
 #restaurantimg {
-  width: 150px;
-  height: 100px;
+  width: 300px;
   margin-left: 20px
 }
 
 .description {
-  padding-left: 20px;
   font-size: 17px;
+  padding-top: 5px;
 }
 
 .btn.btn-default.btn-xs {
