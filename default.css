@@ -1,6 +1,7 @@
 body {
   font-family: "Trebuchet MS", Helvetica, sans-serif;;
 }
+
 .header {
   font-size: 30px;
   letter-spacing: 2px;
@@ -50,8 +51,16 @@ form {
   border-radius: 3px;
 }
 
-.biz {
+h1 {
+  margin-left: 10%;
   color: green;
+}
+
+.panel.panel-default {
+  border-color: green;
+  border-width: 3px;
+  border-radius: 20px;
+  padding-bottom: 50px;
 }
 
 i.fa.fa-star {
@@ -63,12 +72,12 @@ i.fa.fa-star {
   border-style: solid;
   border-color: yellow;
   border-radius: 20px;
+  border-width: 2px;
   padding: 20px;
   margin-top: 10px;
   margin-left: auto;
   margin-right: auto;
-  width: 100%;
-  height: 100%;
+  width: 90%;
 }
 
 .category {
@@ -85,9 +94,12 @@ i.fa.fa-star {
   padding-top: 5px;
 }
 
-.btn.btn-default.btn-sm.center-block {
+.btn.btn-default.btn-sm {
   margin-top: 10px;
+  margin-left: auto;
+  margin-right: auto;
 }
+
 #results {
   padding-top: 50px;
   margin-left: auto;
@@ -103,7 +115,16 @@ i.fa.fa-star {
   padding-top: 5px;
 }
 
-.btn.btn-default.btn-xs {
-  color: green;
-  margin-left:20px;
+.form-control.textbox {
+  margin-top: 20px;
+  width: 90%;
+  margin-left: auto;
+  margin-right: auto;
+  border-radius: 20px;
+}
+
+.btn.btn-success.btn-sm {
+  margin-top: 20px;
+  margin-left:80%;
+  border-radius: 4px;
 }
