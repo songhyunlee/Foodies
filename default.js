@@ -121,70 +121,6 @@ var reviews = [
   },
 ]
 
-// Run two types of searches using the term.
-function homeSearch(term) {
-  var suggestions = [];
-
-  var match = fullMatch(term);
-  if (match) {
-    suggestions.push(match);
-  }
-
-  if ( suggestions.length < 1) {
-    suggestions = partialMatch(term);
-  }
-
-  function fullMatch(term) {
-    for (var i = 0; i < reviews.length; i++) {
-      if (term === reviews[i].biz) {
-        return reviews[i];
-      }
-      if (term === reviews[i].food) {
-        return reviews[i];
-      }
-    }
-  }
-
-  function partialMatch(term) {
-    var results = [];
-    for (var i =0; i < reviews.length; i++) {
-      if (reviews[i].biz.indexOf(term) !== -1) {
-        results.push(reviews[i]);
-      }
-      if (reviews[i].food.indexOf(term) !== -1) {
-        results.push(reviews[i]);
-      }
-    };
-
-    if(results.length > 0) {
-      return results;
-    } else {
-      return false;
-    }
-  }
-
-  if (suggestions.length > 0) {
-    return suggestions;
-  };
-}
-
-function showResults(e) {
-  // Search for restaurants that match the term.
-  var term = document.getElementById('term').value;
-  var matches = homeSearch(term);
-
-  var heading = document.createElement('h4');
-  heading.textContent = "Showing results for: ''" + term + "'.";
-
-  var results = document.getElementById('results');
-  results.appendChild(heading);
-
-  for (var i = 0; i < matches.length; i++) {
-    theRestaurant = restaurant(matches[i]);
-    results.appendChild(theRestaurant);
-  }
-}
-
 //Listen for the click on the 'find' button.
 var myElement = document.getElementById('find');
 myElement.addEventListener('click', showResults);
@@ -197,11 +133,11 @@ term.addEventListener("keydown", function(e) {
 });
 
 // View one review.
-btnClicked = document.getElementById('results');
+var btnClicked = document.getElementById('results');
 btnClicked.addEventListener('click', function(e) {
-  if (e.target.className.indexOf('review-button') !== -1) {
+  if (e.target.className==='btn btn-default btn-sm review-button') {
 
-    swap('current', 'reviews');
+     swap('current', 'reviews');
 
     for (var i = 0; i < reviews.length; i++) {
       if (e.target.getAttribute('id') == reviews[i].id) {
@@ -212,7 +148,17 @@ btnClicked.addEventListener('click', function(e) {
     var theContainer = document.getElementById('reviews');
     theContainer.appendChild(theReview);
   };
+
 });
+
+//Listen for the submit button to gather review from user.
+// var submitted = document.getElementById('reviews');
+// submitted.addEventListener('click', function submit(theEvent) {
+//   if (theEvent.target.id==='submit-review') {
+//     var newReview = document.getElementById('new-review');
+//     console.log(theEvent.target.id);
+//   }
+// });
 
 function swap(current, next) {
   var theCurrent = document.getElementsByClassName(current)[0];
@@ -270,7 +216,6 @@ function review(item) {
     var theStar = document.createElement('i');
     theStar.setAttribute('class', 'fa fa-star');
     rateStar.appendChild(theStar);
-
   };
 
   info.appendChild(biz);
@@ -280,24 +225,16 @@ function review(item) {
   info.appendChild(phone);
   info.appendChild(description);
 
+  //display review that's in the data.
   item.review.forEach(function(text) {
     var reviewBox = document.createElement('div');
     reviewBox.setAttribute('class', 'reviewbox');
     reviewBox.textContent = text;
     panel.appendChild(reviewBox);
   });
-
-  var textBox = document.createElement('textarea');
-  var submitButton = document.createElement('button');
-
-  textBox.setAttribute('class', 'form-control textbox');
-  textBox.setAttribute('rows', '5');
-  textBox.setAttribute('placeholder', 'Start writing your review here...');
-  submitButton.setAttribute('class', 'btn btn-success btn-sm');
-  submitButton.textContent = 'Submit Review';
-
-  panel.appendChild(textBox);
-  panel.appendChild(submitButton);
+  //create review form.
+  var reviewContent = reviewElements();
+  panel.appendChild(reviewContent);
 
   return row;
 }
@@ -307,12 +244,10 @@ function restaurant(item) {
   var thePanel = document.createElement('div');
   var panelHeading = document.createElement('div');
   var panelBody = document.createElement('div');
-  // var panelSub = document.createElement('div');
 
   thePanel.setAttribute('class', 'panel panel-success');
   panelHeading.setAttribute('class', 'panel-heading');
   panelBody.setAttribute('class', 'panel-body');
-  // panelSub.setAttribute('class', 'panel-body');
   thePanel.appendChild(panelHeading);
 
   thePanel.appendChild(panelBody);
@@ -351,7 +286,6 @@ function restaurant(item) {
   panelBody.appendChild(bizWhere);
   panelBody.appendChild(bizNumber);
   panelBody.appendChild(bizAbout);
-  // panelBody.appendChild(panelSub);
   panelBody.appendChild(theButton);
 
   var allStars = thePanel.getElementsByClassName('rateStar')[0];
@@ -364,27 +298,90 @@ function restaurant(item) {
   return thePanel;
 }
 
-function textArea() {
+// Run two types of searches using the term.
+function homeSearch(term) {
+  var suggestions = [];
 
+  var match = fullMatch(term);
+  if (match) {
+    suggestions.push(match);
+  }
+
+  if ( suggestions.length < 1) {
+    suggestions = partialMatch(term);
+  }
+
+  if (suggestions.length > 0) {
+    return suggestions;
+  };
 }
-//
-//   function addText(theEvent) {
-//
-//     var infobox = theEvent.target.parentNode;
-//     var textBox = document.createElement('textarea');
-//     var submitButton = document.createElement('button');
-//
-//     textBox.setAttribute('class', 'form-control');
-//     textBox.setAttribute('rows', '5');
-//     textBox.setAttribute('placeholder', 'Start writing your review here...');
-//
-//     submitButton.textContent = 'Submit';
-//     submitButton.setAttribute('class','btn btn-default btn-sm center-block');
-//     submitButton.textContent = 'Submit';
-//     // submitButton.setAttribute('id', clicked[j].id);  -> clicked[j] is undefined?
-//
-//     infobox.appendChild(textBox);
-//     infobox.appendChild(submitButton);
-//
-//   };
-//
+
+function showResults(e) {
+  // Search for restaurants that match the term.
+  var term = document.getElementById('term').value;
+  var matches = homeSearch(term);
+
+  var heading = document.createElement('h4');
+  heading.textContent = "Showing results for: " + "'"+ term + ".'" ;
+
+  var results = document.getElementById('results');
+  results.appendChild(heading);
+
+  for (var i = 0; i < matches.length; i++) {
+    theRestaurant = restaurant(matches[i]);
+    results.appendChild(theRestaurant);
+  }
+}
+
+
+function partialMatch(term) {
+  var results = [];
+  for (var i =0; i < reviews.length; i++) {
+    if (reviews[i].biz.indexOf(term) !== -1) {
+      results.push(reviews[i]);
+    }
+    if (reviews[i].food.indexOf(term) !== -1) {
+      results.push(reviews[i]);
+    }
+  };
+
+  if(results.length > 0) {
+    return results;
+  } else {
+    return false;
+  }
+}
+
+function fullMatch(term) {
+  for (var i = 0; i < reviews.length; i++) {
+    if (term === reviews[i].biz) {
+      return reviews[i];
+    }
+    if (term === reviews[i].food) {
+      return reviews[i];
+    }
+  }
+}
+
+function reviewElements(item) {
+
+  var theForm = document.createElement('form');
+  var textBox = document.createElement('textarea');
+  var addButton = document.createElement('button');
+  var submitButton = document.createElement('button');
+
+  theForm.setAttribute('id', 'theForm');
+  textBox.setAttribute('class', 'form-control textbox');
+  textBox.setAttribute('rows', '5');
+  textBox.setAttribute('placeholder', 'Start writing your review here...');
+  textBox.setAttribute('id','new-review');
+
+  submitButton.setAttribute('class', 'btn btn-success btn-sm');
+  submitButton.setAttribute('id', 'submit-review');
+  submitButton.textContent = 'Submit Review';
+
+  theForm.appendChild(textBox);
+  theForm.appendChild(submitButton);
+
+  return theForm;
+}
