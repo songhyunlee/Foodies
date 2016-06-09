@@ -30,13 +30,9 @@ form {
   padding-top: 20px;
 }
 
-.container#new{
-  width: 80%;
-  height: 80%;
-}
-
-#new {
-  padding-top: 20px;
+#home{
+  margin-top: 10px;
+  margin-left: 20px;
 }
 
 #searchbox {

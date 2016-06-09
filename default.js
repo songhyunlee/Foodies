@@ -142,7 +142,7 @@ btnClicked.addEventListener('click', function(e) {
 
     for (var i = 0; i < reviews.length; i++) {
       if (e.target.getAttribute('id') == reviews[i].id) {
-        var theReview = review(reviews[i]);
+        var theReview = pageElements(reviews[i]);
         matchedBiz.push(i);
       }
     }
@@ -152,9 +152,31 @@ btnClicked.addEventListener('click', function(e) {
   };
 });
 
+var header = document.getElementById('foodies-header');
+header.addEventListener('click', function(h) {
+
+  if (h.target.id==='home') {
+  swap('current', 'searchbox');
+  }
+
+  // var removeEl = document.getElementById('results');
+  // var containerEl = removeEl.parentNode;
+  // containerEl.removeChild(removeEl);
+  //
+  // var area = document.getElementById('resultsArea');
+  // var newResults = document.createElement('div');
+  // newResults.setAttribute('id', 'results');
+  // area.appendChild(newResults);
+  //
+  // console.log('hello');
+  // search(term);
+  // showResults(results);
+});
+
 // Listen for the submit button to gather review from user.
 var submitted = document.getElementById('reviews');
 submitted.addEventListener('click', function submit(theEvent) {
+
   if (theEvent.target.id==='submit-review') {
     var newReview = document.getElementById('new-review').value;
     reviews[matchedBiz].review.push(newReview);
@@ -166,8 +188,48 @@ submitted.addEventListener('click', function submit(theEvent) {
     var where = document.getElementById('newbox');
     where.appendChild(newBox);
 
+    clearFields();
+
   }
 });
+
+function showResults(results) {
+  var term = document.getElementById('term').value;
+  var matches = search(term);
+
+  var heading = document.createElement('h4');
+  heading.textContent = "Showing results for: " + "'"+ term + ".'" ;
+
+  var results = document.getElementById('results');
+  results.appendChild(heading);
+
+  for (var i = 0; i < matches.length; i++) {
+    theRestaurant = resultElements(matches[i]);
+    results.appendChild(theRestaurant);
+  }
+}
+
+function search(term) {
+  var results = [];
+  for (var i =0; i < reviews.length; i++) {
+    if (reviews[i].biz.indexOf(term) !== -1) {
+      results.push(reviews[i]);
+    }
+    if (reviews[i].food.indexOf(term) !== -1) {
+      results.push(reviews[i]);
+    }
+  };
+
+  if(results.length > 0) {
+    return results;
+  } else {
+    return false;
+  }
+}
+
+function clearFields() {
+  document.getElementById('new-review').value = "";
+}
 
 function swap(current, next) {
   var theCurrent = document.getElementsByClassName(current)[0];
@@ -180,7 +242,7 @@ function swap(current, next) {
 };
 
 //creates elements for a restaurant review page.
-function review(item) {
+function pageElements(item) {
   var row = document.createElement('div');
   var container = document.createElement('div');
   var panel = document.createElement('div');
@@ -257,7 +319,7 @@ function review(item) {
 }
 
 //creates elements to be displayed when user searches for a restaurant.
-function restaurant(item) {
+function resultElements(item) {
   var thePanel = document.createElement('div');
   var panelHeading = document.createElement('div');
   var panelBody = document.createElement('div');
@@ -315,71 +377,7 @@ function restaurant(item) {
   return thePanel;
 }
 
-// Run two types of searches using the term.
-function homeSearch(term) {
-  var suggestions = [];
-
-  var match = fullMatch(term);
-  if (match) {
-    suggestions.push(match);
-  }
-
-  if ( suggestions.length < 1) {
-    suggestions = partialMatch(term);
-  }
-
-  if (suggestions.length > 0) {
-    return suggestions;
-  };
-}
-
-function showResults(e) {
-  // Search for restaurants that match the term.
-  var term = document.getElementById('term').value;
-  var matches = homeSearch(term);
-
-  var heading = document.createElement('h4');
-  heading.textContent = "Showing results for: " + "'"+ term + ".'" ;
-
-  var results = document.getElementById('results');
-  results.appendChild(heading);
-
-  for (var i = 0; i < matches.length; i++) {
-    theRestaurant = restaurant(matches[i]);
-    results.appendChild(theRestaurant);
-  }
-}
-
-
-function partialMatch(term) {
-  var results = [];
-  for (var i =0; i < reviews.length; i++) {
-    if (reviews[i].biz.indexOf(term) !== -1) {
-      results.push(reviews[i]);
-    }
-    if (reviews[i].food.indexOf(term) !== -1) {
-      results.push(reviews[i]);
-    }
-  };
-
-  if(results.length > 0) {
-    return results;
-  } else {
-    return false;
-  }
-}
-
-function fullMatch(term) {
-  for (var i = 0; i < reviews.length; i++) {
-    if (term === reviews[i].biz) {
-      return reviews[i];
-    }
-    if (term === reviews[i].food) {
-      return reviews[i];
-    }
-  }
-}
-
+//creates separate review 'boxes' for each review
 function reviewElements(item) {
 
   var theForm = document.createElement('form');
