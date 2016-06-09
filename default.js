@@ -140,8 +140,6 @@ btnClicked.addEventListener('click', function(e) {
 
     swap('current', 'reviews');
 
-    var area = document.getElementById('show')
-    clear(area);
 
     for (var i = 0; i < reviews.length; i++) {
       if (e.target.getAttribute('id') == reviews[i].id) {
@@ -406,9 +404,3 @@ function reviewElements(item) {
 
   return theForm;
 }
-
-function function clear(area) {
-  while(area.firstChild) {
-    area.removeChild(area.firstChild);
-  }
-};
