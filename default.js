@@ -158,7 +158,14 @@ submitted.addEventListener('click', function submit(theEvent) {
   if (theEvent.target.id==='submit-review') {
     var newReview = document.getElementById('new-review').value;
     reviews[matchedBiz].review.push(newReview);
-    swap('current', 'searchbox');
+
+    var newBox = document.createElement('div');
+    newBox.setAttribute('class', 'reviewbox');
+    newBox.textContent = newReview;
+
+    var where = document.getElementById('newbox');
+    where.appendChild(newBox);
+
   }
 });
 
@@ -178,6 +185,8 @@ function review(item) {
   var container = document.createElement('div');
   var panel = document.createElement('div');
   var panelbody = document.createElement('div');
+  var panelbodytwo = document.createElement('div');
+  var panelfooter = document.createElement('div');
   var image = document.createElement('p');
   var food = document.createElement('img');
   var address = document.createElement('div');
@@ -191,6 +200,9 @@ function review(item) {
   container.setAttribute('class', 'col-md-offset-1 col-md-10');
   panel.setAttribute('class', 'panel panel-default');
   panelbody.setAttribute('class', 'panel-body');
+  panelbodytwo.setAttribute('class', 'panel-body');
+  panelbodytwo.setAttribute('id','newbox');
+  panelfooter.setAttribute('class', 'panel-footer');
   image.setAttribute('class', 'col-xs-3');
   image.setAttribute('id', 'restaurantimg')
   food.setAttribute('src', item.image);
@@ -209,6 +221,7 @@ function review(item) {
   row.appendChild(container);
   container.appendChild(panel);
   panel.appendChild(panelbody);
+  panel.appendChild(panelbodytwo);
   panelbody.appendChild(image);
   panelbody.appendChild(info);
 
@@ -232,11 +245,13 @@ function review(item) {
     var reviewBox = document.createElement('div');
     reviewBox.setAttribute('class', 'reviewbox');
     reviewBox.textContent = text;
-    panel.appendChild(reviewBox);
+    panelbodytwo.appendChild(reviewBox);
   });
+
+  panel.appendChild(panelfooter);
   //create review form.
   var reviewContent = reviewElements();
-  panel.appendChild(reviewContent);
+  panelfooter.appendChild(reviewContent);
 
   return row;
 }
@@ -373,7 +388,7 @@ function reviewElements(item) {
   var submitButton = document.createElement('button');
 
   theForm.setAttribute('id', 'theForm');
-  textBox.setAttribute('class', 'form-control textbox');
+  textBox.setAttribute('class', 'form-control textbox current');
   textBox.setAttribute('rows', '5');
   textBox.setAttribute('placeholder', 'Start writing your review here...');
   textBox.setAttribute('id','new-review');

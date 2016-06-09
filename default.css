@@ -63,6 +63,11 @@ h1 {
   padding-bottom: 50px;
 }
 
+.panel-footer {
+  background-color: white;
+  border-top: none;
+}
+
 i.fa.fa-star {
   color: green;
   font-size: 17px;
