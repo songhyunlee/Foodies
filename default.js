@@ -133,32 +133,34 @@ term.addEventListener("keydown", function(e) {
 });
 
 // View one review.
+var matchedBiz =[];
 var btnClicked = document.getElementById('results');
 btnClicked.addEventListener('click', function(e) {
-  if (e.target.className==='btn btn-default btn-sm review-button') {
+  if (e.target.className.indexOf('review-button') !== -1) {
 
      swap('current', 'reviews');
 
     for (var i = 0; i < reviews.length; i++) {
       if (e.target.getAttribute('id') == reviews[i].id) {
         var theReview = review(reviews[i]);
+        matchedBiz.push(i);
       }
     }
 
     var theContainer = document.getElementById('reviews');
     theContainer.appendChild(theReview);
   };
-
 });
 
-//Listen for the submit button to gather review from user.
-// var submitted = document.getElementById('reviews');
-// submitted.addEventListener('click', function submit(theEvent) {
-//   if (theEvent.target.id==='submit-review') {
-//     var newReview = document.getElementById('new-review');
-//     console.log(theEvent.target.id);
-//   }
-// });
+// Listen for the submit button to gather review from user.
+var submitted = document.getElementById('reviews');
+submitted.addEventListener('click', function submit(theEvent) {
+  if (theEvent.target.id==='submit-review') {
+    var newReview = document.getElementById('new-review').value;
+    reviews[matchedBiz].review.push(newReview);
+    swap('current', 'searchbox');
+  }
+});
 
 function swap(current, next) {
   var theCurrent = document.getElementsByClassName(current)[0];
@@ -377,6 +379,7 @@ function reviewElements(item) {
   textBox.setAttribute('id','new-review');
 
   submitButton.setAttribute('class', 'btn btn-success btn-sm');
+  submitButton.setAttribute('type', 'button');
   submitButton.setAttribute('id', 'submit-review');
   submitButton.textContent = 'Submit Review';
 
