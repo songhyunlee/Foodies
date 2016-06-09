@@ -138,7 +138,10 @@ var btnClicked = document.getElementById('results');
 btnClicked.addEventListener('click', function(e) {
   if (e.target.className.indexOf('review-button') !== -1) {
 
-     swap('current', 'reviews');
+    swap('current', 'reviews');
+
+    var area = document.getElementById('show')
+    clear(area);
 
     for (var i = 0; i < reviews.length; i++) {
       if (e.target.getAttribute('id') == reviews[i].id) {
@@ -259,8 +262,10 @@ function pageElements(item) {
   var description = document.createElement('div');
 
   row.setAttribute('class', 'row');
+  row.setAttribute('id', 'show');
   container.setAttribute('class', 'col-md-offset-1 col-md-10');
   panel.setAttribute('class', 'panel panel-default');
+  panel.setAttribute('id', 'show');
   panelbody.setAttribute('class', 'panel-body');
   panelbodytwo.setAttribute('class', 'panel-body');
   panelbodytwo.setAttribute('id','newbox');
@@ -401,3 +406,9 @@ function reviewElements(item) {
 
   return theForm;
 }
+
+function function clear(area) {
+  while(area.firstChild) {
+    area.removeChild(area.firstChild);
+  }
+};
