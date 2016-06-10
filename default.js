@@ -252,6 +252,7 @@ function clear(area) {
 
 //creates elements for a restaurant review page.
 function pageElements(item) {
+  var reviewHeader = document.createElement('h1');
   var row = document.createElement('div');
   var container = document.createElement('div');
   var panel = document.createElement('div');
@@ -267,6 +268,7 @@ function pageElements(item) {
   var rateStar = document.createElement('div');
   var description = document.createElement('div');
 
+  reviewHeader.textContent = 'Reviews';
   row.setAttribute('class', 'row');
   row.setAttribute('id', 'show');
   container.setAttribute('class', 'col-md-offset-1 col-md-10');
@@ -291,6 +293,7 @@ function pageElements(item) {
   description.setAttribute('class', 'description');
   description.textContent = item.description;
 
+  row.appendChild(reviewHeader);
   row.appendChild(container);
   container.appendChild(panel);
   panel.appendChild(panelbody);
