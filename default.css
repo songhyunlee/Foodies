@@ -32,6 +32,7 @@ form {
 
 #home{
   margin-top: 10px;
+  margin-bottom: 10px;
   margin-left: 20px;
 }
 
@@ -59,26 +60,34 @@ h1 {
   padding-bottom: 50px;
 }
 
-.panel-footer {
-  background-color: white;
-  border-top: none;
-}
-
 i.fa.fa-star {
   color: green;
   font-size: 17px;
 }
 
+i.fa.fa-user {
+  margin-right: 5px;
+}
 .reviewbox {
   border-style: solid;
   border-color: yellow;
   border-radius: 20px;
   border-width: 2px;
-  padding: 20px;
+  padding: 10px;
   margin-top: 10px;
-  margin-left: auto;
-  margin-right: auto;
-  width: 90%;
+  width: 100%;
+}
+
+.reviewer {
+  border-style: solid;
+  border-color: white;
+  border-radius: 20px;
+  border-width: 2px;
+  padding: 10px;
+  margin-top: 10px;
+  margin-left: 40px;;
+  margin-right: 2px;
+  width: 100%;
 }
 
 .category {
@@ -116,12 +125,22 @@ i.fa.fa-star {
   padding-top: 5px;
 }
 
+#new-person {
+  border-radius: 15px;
+  margin-left: 50px;
+  margin-top: 200px;
+  margin-bottom: 5px;
+  width: 20%;
+  border-color: green;
+}
+
 .form-control.textbox {
   margin-top: 20px;
   width: 90%;
   margin-left: auto;
   margin-right: auto;
   border-radius: 20px;
+  border-color: green;
 }
 
 .btn.btn-success.btn-sm {

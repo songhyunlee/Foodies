@@ -181,14 +181,30 @@ submitted.addEventListener('click', function submit(theEvent) {
     var newReview = document.getElementById('new-review').value;
     reviews[matchedBiz].review.push(newReview);
 
+    var newPerson = document.getElementById('new-person').value;
+    reviews[matchedBiz].reviewer.push(newPerson);
+
     var newBox = document.createElement('div');
     newBox.setAttribute('class', 'reviewbox');
     newBox.textContent = newReview;
 
-    var where = document.getElementById('newbox');
-    where.appendChild(newBox);
+    var newUser = document.createElement('div');
+    newUser.setAttribute('class', 'reviewer');
+    newUser.textContent = newPerson;
 
-    clearFields();
+    var theUser = document.createElement('i');
+    theUser.setAttribute('class', 'fa fa-user pull-left');
+
+    newUser.appendChild(theUser);
+
+    var here = document.getElementById('newperson');
+    var there = document.getElementById('newbox');
+
+    here.appendChild(newUser);
+    there.appendChild(newBox);
+
+    clearFields('new-person');
+    clearFields('new-review');
 
   }
 });
@@ -215,10 +231,10 @@ function showResults(results) {
 function search(term) {
   var results = [];
   for (var i =0; i < reviews.length; i++) {
-    if (reviews[i].biz.indexOf(term) !== -1) {
+    if (reviews[i].biz.toLowerCase().indexOf(term) !== -1) {
       results.push(reviews[i]);
     }
-    if (reviews[i].food.indexOf(term) !== -1) {
+    if (reviews[i].food.toLowerCase().indexOf(term) !== -1) {
       results.push(reviews[i]);
     }
   };
@@ -230,8 +246,8 @@ function search(term) {
   }
 }
 
-function clearFields() {
-  document.getElementById('new-review').value = "";
+function clearFields(id) {
+  document.getElementById(id).value = "";
 }
 
 function swap(current, next) {
@@ -257,8 +273,9 @@ function pageElements(item) {
   var container = document.createElement('div');
   var panel = document.createElement('div');
   var panelbody = document.createElement('div');
-  var panelbodytwo = document.createElement('div');
-  var panelfooter = document.createElement('div');
+  var panelbodyA = document.createElement('div');
+  var panelbodyB = document.createElement('div');
+  var panelbodyC = document.createElement('div');
   var image = document.createElement('p');
   var food = document.createElement('img');
   var address = document.createElement('div');
@@ -275,9 +292,11 @@ function pageElements(item) {
   panel.setAttribute('class', 'panel panel-default');
   panel.setAttribute('id', 'show');
   panelbody.setAttribute('class', 'panel-body');
-  panelbodytwo.setAttribute('class', 'panel-body');
-  panelbodytwo.setAttribute('id','newbox');
-  panelfooter.setAttribute('class', 'panel-footer'); 
+  panelbodyA.setAttribute('class', 'panel-body col-md-2');
+  panelbodyA.setAttribute('id', 'newperson');
+  panelbodyB.setAttribute('class', 'panel-body col-md-9');
+  panelbodyB.setAttribute('id','newbox');
+  panelbodyC.setAttribute('class', 'panel-body');
   image.setAttribute('class', 'col-xs-3');
   image.setAttribute('id', 'restaurantimg')
   food.setAttribute('src', item.image);
@@ -297,7 +316,8 @@ function pageElements(item) {
   row.appendChild(container);
   container.appendChild(panel);
   panel.appendChild(panelbody);
-  panel.appendChild(panelbodytwo);
+  panel.appendChild(panelbodyA);
+  panel.appendChild(panelbodyB);
   panelbody.appendChild(image);
   panelbody.appendChild(info);
 
@@ -321,13 +341,25 @@ function pageElements(item) {
     var reviewBox = document.createElement('div');
     reviewBox.setAttribute('class', 'reviewbox');
     reviewBox.textContent = text;
-    panelbodytwo.appendChild(reviewBox);
+    panelbodyB.appendChild(reviewBox);
   });
 
-  panel.appendChild(panelfooter);
+  item.reviewer.forEach(function(text) {
+    var reviewer = document.createElement('div');
+    reviewer.setAttribute('class', 'reviewer');
+    var theUser = document.createElement('i');
+    theUser.setAttribute('class', 'fa fa-user pull-left');
+
+    reviewer.textContent = "  " + text;
+    reviewer.appendChild(theUser);
+    panelbodyA.appendChild(reviewer);
+
+  })
+
+  panel.appendChild(panelbodyC);
   //create review form.
   var reviewContent = reviewElements();
-  panelfooter.appendChild(reviewContent);
+  panelbodyC.appendChild(reviewContent);
 
   return row;
 }
@@ -395,12 +427,17 @@ function resultElements(item) {
 function reviewElements(item) {
 
   var theForm = document.createElement('form');
+  var username = document.createElement('input');
   var textBox = document.createElement('textarea');
   var addButton = document.createElement('button');
   var submitButton = document.createElement('button');
 
   theForm.setAttribute('id', 'theForm');
-  textBox.setAttribute('class', 'form-control textbox current');
+  username.setAttribute('type', 'text');
+  username.setAttribute('id', 'new-person');
+  username.setAttribute('class', 'form-control');
+  username.setAttribute('placeholder','Your name: ')
+  textBox.setAttribute('class', 'form-control textbox');
   textBox.setAttribute('rows', '5');
   textBox.setAttribute('placeholder', 'Start writing your review here...');
   textBox.setAttribute('id','new-review');
@@ -410,6 +447,7 @@ function reviewElements(item) {
   submitButton.setAttribute('id', 'submit-review');
   submitButton.textContent = 'Submit Review';
 
+  theForm.appendChild(username);
   theForm.appendChild(textBox);
   theForm.appendChild(submitButton);
 
