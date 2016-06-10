@@ -9,7 +9,7 @@ var reviews = [
     address: '1 Culver Dr, Irvine, CA 92612',
     phone: '949-567-8901',
     id: 'cheezboard',
-    image: "cheezboard.jpg",
+    image: "images/cheezboard.jpg",
   },
   {
     food: 'Chinese',
@@ -21,7 +21,7 @@ var reviews = [
     address: '3333 Bristol St, Costa Mesa CA 92603',
     phone: '949-567-8901',
     id: 'greatchina',
-    image: 'greatchina.jpeg',
+    image: 'images/greatchina.jpeg',
   },
   {
     food: 'Seafood',
@@ -33,7 +33,7 @@ var reviews = [
     address: '1 Culver Dr, Irvine, CA 92612',
     phone: '949-567-8901',
     id: 'seafood',
-    image: 'oysters.jpeg',
+    image: 'images/oysters.jpeg',
   },
   {
     food: 'Italian',
@@ -45,7 +45,7 @@ var reviews = [
     address: '3333 Bristol St, Costa Mesa CA 92603',
     phone: '949-567-8901',
     id: 'italian',
-    image: 'siciliana.jpg',
+    image: 'images/siciliana.jpg',
   },
   {
     food: 'Korean',
@@ -57,7 +57,7 @@ var reviews = [
     address: '1 Culver Dr, Irvine, CA 92612',
     phone: '949-567-8901',
     id: 'korean',
-    image: 'baekjung.jpg',
+    image: 'images/baekjung.jpg',
   },
   {
     food: 'Japanese',
@@ -69,7 +69,7 @@ var reviews = [
     address: '1 Culver Dr, Irvine, CA 92612',
     phone: '949-567-8901',
     id: 'japnese',
-    image: 'sushi.jpg',
+    image: 'images/sushi.jpg',
   },
   {
     food: 'Mexican',
@@ -81,7 +81,7 @@ var reviews = [
     address: '1 Culver Dr, Irvine, CA 92612',
     phone: '949-567-8901',
     id: 'tacos',
-    image: 'burritos.jpg',
+    image: 'images/burritos.jpg',
   },
   {
     food: 'Food truck',
@@ -93,7 +93,7 @@ var reviews = [
     address: '1 Culver Dr, Irvine, CA 92612',
     phone: '949-567-8901',
     id: 'truck',
-    image: 'foodtruck.jpg',
+    image: 'images/foodtruck.jpg',
   },
   {
     food: 'Dessert',
@@ -105,7 +105,7 @@ var reviews = [
     address: '1 Culver Dr, Irvine, CA 92612',
     phone: '949-567-8901',
     id: 'heaven',
-    image: 'matcha.jpeg',
+    image: 'images/matcha.jpeg',
   },
   {
     food: 'Coffee',
@@ -117,7 +117,7 @@ var reviews = [
     address: '1 Culver Dr, Irvine, CA 92612',
     phone: '949-567-8901',
     id: 'cafe',
-    image: 'coffee.jpg',
+    image: 'images/coffee.jpg',
   },
 ]
 
@@ -277,7 +277,7 @@ function pageElements(item) {
   panelbody.setAttribute('class', 'panel-body');
   panelbodytwo.setAttribute('class', 'panel-body');
   panelbodytwo.setAttribute('id','newbox');
-  panelfooter.setAttribute('class', 'panel-footer');
+  panelfooter.setAttribute('class', 'panel-footer'); 
   image.setAttribute('class', 'col-xs-3');
   image.setAttribute('id', 'restaurantimg')
   food.setAttribute('src', item.image);
