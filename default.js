@@ -140,15 +140,14 @@ btnClicked.addEventListener('click', function(e) {
 
     swap('current', 'reviews');
 
-
     for (var i = 0; i < reviews.length; i++) {
       if (e.target.getAttribute('id') == reviews[i].id) {
         var theReview = pageElements(reviews[i]);
         matchedBiz.push(i);
       }
     }
-
     var theContainer = document.getElementById('reviews');
+    clear(theContainer)
     theContainer.appendChild(theReview);
   };
 });
@@ -195,6 +194,9 @@ submitted.addEventListener('click', function submit(theEvent) {
 });
 
 function showResults(results) {
+  var theResults= document.getElementById('results');
+  clear(theResults);
+
   var term = document.getElementById('term').value;
   var matches = search(term);
 
@@ -241,6 +243,12 @@ function swap(current, next) {
   theNext.classList.add('current');
   theNext.classList.remove('hide');
 };
+
+function clear(area) {
+  while(area.firstChild) {
+    area.removeChild(area.firstChild);
+  }
+}
 
 //creates elements for a restaurant review page.
 function pageElements(item) {
