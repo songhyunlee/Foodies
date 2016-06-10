@@ -5,7 +5,7 @@ var reviews = [
     description: 'Vegetarian pizzeria serving different pizza everyday...',
     reviewer: ['Sarah A.', 'Reviewer B', 'Reviewer C'],
     review: ['The best vegetarian pizza I have ever had.', 'Lorem ipsum dolor sit amet', 'consectetur adipiscing elit, sed do'],
-    rating: 5,
+    rating: [5, 5, 5],
     address: '1 Culver Dr, Irvine, CA 92612',
     phone: '949-567-8901',
     id: 'cheezboard',
@@ -17,7 +17,7 @@ var reviews = [
     description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et ',
     reviewer: ['John D.', 'Reviewer B', 'Reviewer C'],
     review: ['Delicious food, excellent service','Lorem ipsum dolor sit amet', 'consectetur adipiscing elit, sed do'],
-    rating: 5,
+    rating: [5, 5, 5],
     address: '3333 Bristol St, Costa Mesa CA 92603',
     phone: '949-567-8901',
     id: 'greatchina',
@@ -29,7 +29,7 @@ var reviews = [
     description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et ',
     reviewer: ['John D.', 'Reviewer B', 'Reviewer C'],
     review: ['I ordered the daily special, but the oysters were not fresh at all.', 'Lorem ipsum dolor sit amet', 'consectetur adipiscing elit, sed do'],
-    rating: 2,
+    rating: [2, 2, 2],
     address: '1 Culver Dr, Irvine, CA 92612',
     phone: '949-567-8901',
     id: 'seafood',
@@ -41,7 +41,7 @@ var reviews = [
     description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et ',
     reviewer: ['John D.', 'Reviewer B', 'Reviewer C'],
     review: ['I do not understand why people line up for this place. It was okay.','Lorem ipsum dolor sit amet', 'consectetur adipiscing elit, sed do'],
-    rating: 3,
+    rating: [3, 3, 3],
     address: '3333 Bristol St, Costa Mesa CA 92603',
     phone: '949-567-8901',
     id: 'italian',
@@ -53,7 +53,7 @@ var reviews = [
     description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et ',
     reviewer: ['John D.', 'Reviewer B', 'Reviewer C'],
     review: ['Korean BBQ. Sooo good. I definitely want to go back again.','Lorem ipsum dolor sit amet', 'consectetur adipiscing elit, sed do'],
-    rating: 4,
+    rating: [4, 4, 4],
     address: '1 Culver Dr, Irvine, CA 92612',
     phone: '949-567-8901',
     id: 'korean',
@@ -65,7 +65,7 @@ var reviews = [
     description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et ',
     reviewer: ['Sarah A.', 'Reviewer B', 'Reviewer C'],
     review: ['Very low quality. I would rather get sushi from Wholefoods.','Lorem ipsum dolor sit amet', 'consectetur adipiscing elit, sed do'],
-    rating: 1,
+    rating: [1, 1, 1],
     address: '1 Culver Dr, Irvine, CA 92612',
     phone: '949-567-8901',
     id: 'japnese',
@@ -77,7 +77,7 @@ var reviews = [
     description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et ',
     reviewer: ['John D.', 'Reviewer B', 'Reviewer C'],
     review: ['My favorite burritos in town. They should put more meat in them, though.','Lorem ipsum dolor sit amet', 'consectetur adipiscing elit, sed do'],
-    rating: 5,
+    rating: [5, 5, 5],
     address: '1 Culver Dr, Irvine, CA 92612',
     phone: '949-567-8901',
     id: 'tacos',
@@ -89,7 +89,7 @@ var reviews = [
     description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et ',
     reviewer: ['John D.', 'Reviewer B', 'Reviewer C'],
     review: ['You do not want to miss out when their truck is in your area. It is just amazing. Order the cuban or the rubenesque.','Lorem ipsum dolor sit amet', 'consectetur adipiscing elit, sed do'],
-    rating: 4,
+    rating: [4, 4, 4],
     address: '1 Culver Dr, Irvine, CA 92612',
     phone: '949-567-8901',
     id: 'truck',
@@ -101,7 +101,7 @@ var reviews = [
     description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et ',
     reviewer: ['Sarah A.', 'Reviewer B', 'Reviewer C'],
     review: ['All their dessert is made with green tea. If you like matcha, this is your place for dessert.','Lorem ipsum dolor sit amet', 'consectetur adipiscing elit, sed do'],
-    rating: 4,
+    rating: [4, 4, 4],
     address: '1 Culver Dr, Irvine, CA 92612',
     phone: '949-567-8901',
     id: 'heaven',
@@ -113,7 +113,7 @@ var reviews = [
     description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et ',
     reviewer: ['Sarah A.', 'Reviewer B', 'Reviewer C'],
     review: ['Never coming back to this coffeeshop. Dirty and rude service for very cheap quality coffee.','Lorem ipsum dolor sit amet', 'consectetur adipiscing elit, sed do'],
-    rating: 1,
+    rating: [1, 1, 1],
     address: '1 Culver Dr, Irvine, CA 92612',
     phone: '949-567-8901',
     id: 'cafe',
@@ -323,7 +323,12 @@ function pageElements(item) {
 
   rateStar.setAttribute('class', 'rateStar');
   var allStars = container.getElementsByClassName('rateStar')[0];
-  for (var k = 0; k < item.rating; k++) {
+  var sum = item.rating.reduce(function (a, b) {
+    return a + b;
+  });
+  var average = sum / item.rating.length;
+
+  for (var k = 0; k < average; k++) {
     var theStar = document.createElement('i');
     theStar.setAttribute('class', 'fa fa-star');
     rateStar.appendChild(theStar);
@@ -413,8 +418,13 @@ function resultElements(item) {
   panelBody.appendChild(bizAbout);
   panelBody.appendChild(theButton);
 
+  var sum = item.rating.reduce(function (a, b) {
+    return a + b;
+  });
+  var average = sum / item.rating.length;
+
   var allStars = thePanel.getElementsByClassName('rateStar')[0];
-  for (var i = 0; i < item.rating; i++) {
+  for (var i = 0; i < average; i++) {
     var theStar = document.createElement('i');
     theStar.setAttribute('class', 'fa fa-star');
     rateStar.appendChild(theStar);
@@ -429,19 +439,29 @@ function reviewElements(item) {
   var theForm = document.createElement('form');
   var username = document.createElement('input');
   var textBox = document.createElement('textarea');
-  var addButton = document.createElement('button');
+  var starNumbers = 5;
+  var starArea = document.createElement('div');
   var submitButton = document.createElement('button');
 
+  for (var i = 0; i < starNumbers; i++) {
+    var emptyStars = document.createElement('i');
+    emptyStars.setAttribute('class', 'fa fa-star-o');
+    starArea.appendChild(emptyStars);
+  };
+
   theForm.setAttribute('id', 'theForm');
+
   username.setAttribute('type', 'text');
   username.setAttribute('id', 'new-person');
   username.setAttribute('class', 'form-control');
   username.setAttribute('placeholder','Your name: ')
+
   textBox.setAttribute('class', 'form-control textbox');
   textBox.setAttribute('rows', '5');
   textBox.setAttribute('placeholder', 'Start writing your review here...');
   textBox.setAttribute('id','new-review');
 
+  starArea.setAttribute('id', 'starArea');
   submitButton.setAttribute('class', 'btn btn-success btn-sm');
   submitButton.setAttribute('type', 'button');
   submitButton.setAttribute('id', 'submit-review');
@@ -449,6 +469,7 @@ function reviewElements(item) {
 
   theForm.appendChild(username);
   theForm.appendChild(textBox);
+  theForm.appendChild(starArea);
   theForm.appendChild(submitButton);
 
   return theForm;
