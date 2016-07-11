@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>Yelp search</title>
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css"/>
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
+  <link rel="stylesheet" type="text/css" href="public/default.css">
+</head>
+<body>
+  <div class="header" id="foodies-header">
+    <button type="button" id="home" class="btn btn-success pull-left">Home</button>
+    <img id="foodies" src="images/foodies-logo.png">
+  </div>
+
+  <div class="view">
+    <!-- The Search -->
+    <div class="container current" id="searchbox">
+      <div class="input-group col-xs-6 col-xs-offset-3">
+        <input id="term" type="text" class="form-control search" onkeyup"inputSearch(event)" name="term" placeholder="Mexican, Food truck, Cheezboard" width=100%/>
+        <span class="input-group-btn">
+          <button id="find" class="btn btn-success text-right" type="button" name="button" />Find</button>
+        </div>
+        <div class="col-xs-offset-3 col-xs-6" id="resultsArea">
+          <div id = "results"></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- The Reviews -->
+    <div class="container hide" id="reviews">
+      <h1>Reviews</h1>
+    </div>
+  </div>
+
+<script src="default.js"></script>
+</body>
+</html>
