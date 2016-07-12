@@ -218,10 +218,10 @@ function showResults(results) {
 function search(term) {
   var results = [];
   for (var i =0; i < reviews.length; i++) {
-    if (reviews[i].biz.toLowerCase().indexOf(term) !== -1) {
+    if (reviews[i].biz.toLowerCase().indexOf(term.toLowerCase()) !== -1) {
       results.push(reviews[i]);
     }
-    if (reviews[i].food.toLowerCase().indexOf(term) !== -1) {
+    if (reviews[i].food.toLowerCase().indexOf(term.toLowerCase()) !== -1) {
       results.push(reviews[i]);
     }
   };
@@ -427,7 +427,7 @@ function reviewElements(item) {
   var username = document.createElement('input');
   var textBox = document.createElement('textarea');
   var starNumbers = 5;
-  var starArea = document.createElement('div');
+  // var starArea = document.createElement('div');
   var submitButton = document.createElement('button');
 
   // for (var i = 0; i < starNumbers; i++) {
@@ -448,7 +448,7 @@ function reviewElements(item) {
   textBox.setAttribute('placeholder', 'Start writing your review here...');
   textBox.setAttribute('id','new-review');
 
-  starArea.setAttribute('id', 'starArea');
+  // starArea.setAttribute('id', 'starArea');
   submitButton.setAttribute('class', 'btn btn-success btn-sm');
   submitButton.setAttribute('type', 'button');
   submitButton.setAttribute('id', 'submit-review');
@@ -456,7 +456,7 @@ function reviewElements(item) {
 
   theForm.appendChild(username);
   theForm.appendChild(textBox);
-  theForm.appendChild(starArea);
+  // theForm.appendChild(starArea);
   theForm.appendChild(submitButton);
 
   return theForm;

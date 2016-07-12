@@ -23,6 +23,14 @@ body {
   height: 40%;
 }
 
+#starArea {
+  margin-left: 50px;
+  margin-bottom: 5px;
+  margin-top: 5px;
+  width: 20%;
+  border-color: green;
+}
+
 .white {
   background-color: white;
 }
@@ -131,7 +139,7 @@ i.fa.fa-user {
 
 #new-person {
   border-radius: 15px;
-  margin-left: 50px;
+  margin-left: 45px;
   margin-top: 200px;
   margin-bottom: 5px;
   width: 20%;
