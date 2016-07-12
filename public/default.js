@@ -430,11 +430,11 @@ function reviewElements(item) {
   var starArea = document.createElement('div');
   var submitButton = document.createElement('button');
 
-  for (var i = 0; i < starNumbers; i++) {
-    var emptyStars = document.createElement('i');
-    emptyStars.setAttribute('class', 'fa fa-star-o');
-    starArea.appendChild(emptyStars);
-  };
+  // for (var i = 0; i < starNumbers; i++) {
+  //   var emptyStars = document.createElement('i');
+  //   emptyStars.setAttribute('class', 'fa fa-star-o');
+  //   starArea.appendChild(emptyStars);
+  // };
 
   theForm.setAttribute('id', 'theForm');
 
